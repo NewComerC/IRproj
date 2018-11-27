@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0"><!--为了移动端而做准备-->
+
+    <title>首页</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.0/dist/semantic.min.css">
+    <link rel="stylesheet" href="./static/css/me.css">
+</head>
+<body>
+<!-- 三个大部分-->
+<!------------------------head header part-------------------------------------->
+<nav class="ui inverted attached segment m-padded-tb-mini"> <!--inverted 使得 底色变黑 ，反色 attach 没有圆角 附着圆滑-->
+    <!--里面 m-padded-tb-mini 让nav bar的宽度小一点 全是配合那个css me 自己加的-->
+    <div class="ui container"><!---解决第一个logo太靠左边界的问题-->
+        <div class="ui  inverted  secondary menu">
+            <h2 class="ui orange header item">Yelp</h2> <!--加了item 才能加下面的分栏目-->
+            <a href="#" class="item"><i class="home icon"></i>Homepage</a>
+            <a href="#" class="item"><i class="idea icon"></i>Category</a>
+            <a href="#" class="item"><i class="tags icon"></i>Tags</a>
+            <a href="#" class="item"><i class="info icon"></i>About Us</a>
+            <div class="right item">
+                <div class="ui icon input"> <!--这里不加 icon 你的 icon 就出不来-->
+                    <input type="text" placeholder="Search....">
+                    <i class="search link icon"></i> <!--加 link 使得 你把鼠标放到哪个放大镜上 会变成手（像一个链接一样）-->
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</nav>
+
+<!------------------------middle content part-------------------------------------->
+<div class="m-padded-tb-mid"> <!--因为要写内容 所以去除了那些空格， 那么此时为了让我们写的看得见 加入padding-->
+    <!--我们发现 在默认的container 下 左右两边padding 太少或太多了 可是我们改不了 都可以在 在他的外层 自定义一个 m-container 现在我没加 因为我觉得合适-->
+    <div class="ui container">
+        <!-- 不难看出 padding 之后 先写container, 这个东西 会有响应式的帮助， 之后 所有的包括grid 部分 都放在container里面， 这就是套路-->
+        <!--从结果中 就不难看出 放在container 里以后 所有的内容部分 和左右边界 都是有一定的间隔的 并且内容部分出发点都一样-->
+        <div class="ui grid"> <!--可以看到 布局一定是优先的 类似bootstrap semantic Ui 里也用div class = "grid" 布局-->
+            <!--布局成 左边11 右边 5-->
+
+            <!--11份 的左边-->
+            <div class="eleven wide column">
+                <!--这是content 部分的header 在这里 要分成 左右两边 来实现 但 content 左边从第二行开始 就是一个 card 原件-->
+                <div class="ui top attached segment">
+                    <div class="ui middle aligned two column grid">
+                        <!--注意第一行的格式是 左右 左边是 博客 右边是共多少篇 注意这个class 里 two column 这个属性 此外 middle aligned 使得字出现在 Segment的中间位置-->
+                        <div class="column"> <!-- 第一列 也就是左边-->
+                            <h3 class="ui teal header">Restaurant</h3>
+                        </div>
+                        <div class="right aligned column"> <!--第二列 也就是右边 注意要右边对其（使其到右边）-->
+                            We find <h2 class="ui orange header m-inline-block m-text-thin">15</h2> results for you
+                            <!--这里要讲一个特别重要的事 就是 如果不加m-inline-block 那么因为h3 是一个block 属性-->
+                            <!--所谓的block属性 就是 他要单独占一行 但是加入那个属性之后 他就可以和别人出现在一行 注意此属性也要自己设定-->
+
+                        </div>
+                    </div>
+                </div> <!--就是左边的分片,类似于一个大框包着所有的内容 按照他的意思 这个大框实际只包含了 content 左边部分的第一行-->
+
+
+                <div class="ui attached segment">  <!--第二个segment  这个包含着content 左边第二行开始 卡片的部分-->
+                    <!--注意 其中的属性 attached 和 上面一个 segment 的 top attached 和下面的 bottom attached  三个都要写 才能把 两个 segemnt 连在一起（中间没有空隙）-->
+
+                    <!---------------------------第一个卡片----------------------------------->
+                    <div class="ui padded vertical segment m-padded-tb-mid">
+                        <!--卡片部分里面还要细分segment 这是一个 要点 你看原始的模板 就是分开的 这可以说是第一个卡片-->
+                        <!--为了让板式更好像模板 实际 你要这么写才不会跑版-->
+                        <!--首先 class 加 padded 使得 里面的内容离这个 segment 框 远一点-->
+                        <!--加一句vertical 使得 首先 那个 segment不在了 之后 你在 粘贴新的卡片过来，两个卡片之间还会自动帮你做出一个分割线-->
+                        <div class="ui grid"> <!--为什么不写 two column grid 因为那是均分-->
+                            <div class="eleven wide column">
+                                <h3 class="ui header">University of Pittsburgh food bar</h3>
+                                <p class="m-text">Fuel and Fuddle is a lively little joint in the heart of Oakland that
+                                    serves great
+                                    wild fire food and chilled beer on tap. A local food critic once described our food
+                                    as “upscale west coast bar food.” We have no idea what that means, but we like the
+                                    way it sounds.</p>
+
+                                <div class="ui grid">
+                                    <div class="ten wide column">
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d3036.541156209343!2d-79.95886068464749!3d40.441158062077356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e3!4m0!4m5!1s0x8834f229dcbd36dd%3A0x4d8b70af2248a0ef!2sFuel+and+Fuddle%2C+212+Oakland+Ave%2C+Pittsburgh%2C+PA+15213!3m2!1d40.441154!2d-79.956672!5e0!3m2!1szh-CN!2sus!4v1540509574584"
+                                                width="100%" height="115" frameborder="0" style="border:0"
+                                                allowfullscreen></iframe>
+                                    </div>
+                                    <div class="six wide column">
+                                        <br>
+
+                                        <img src="http://images.nymag.com/news/intelligencer/intelposts120326_starstruck_560.jpg"
+                                             alt="" style="width:150px; height:60px">
+                                        <br>
+                                        <p>1,003 customers reviews</p>
+                                    </div>
+                                </div>
+
+                                <div class="two column ui grid">
+                                    <div class="ui eleven wide column">
+                                        <div class="ui mini horizontal link list">
+                                            <!--link是因为这些属性是可以点击的 horizontal 是要放在一行 mini 是变小字体-->
+                                            <div class="item">  <!--因为头像和 名字根在一起 相当于一个整体 所以 用item-->
+                                                <img src="./static/image/user1.jpg" alt="" class="ui avatar image"
+                                                     style="width:30px; height:30px"> <!--avatar image 放圆形小图（头像）-->
+                                                <div class="content">
+                                                    <div class="header">Qizhou</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="item">
+                                                <i class="calendar icon"></i> 2018-10-25
+                                            </div>
+                                            <div class="item">
+                                                <i class="eye icon"></i> 5044
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="right aligned five wide column">
+                                        <a href="#" , target="_blank" class="ui teal  label">Burger</a>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="five wide column"><!--用来放图 注意 图片要是可以点击的链接式的 所以要用a-->
+                                <a href="#" target="_blank">
+                                    <img src="./static/image/food1.jpg" alt="" class="ui rounded image"
+                                         style="width:400px; height:320px">
+                                    <!--round 属性让图片以圆角的方式展开-->
+                                    <!--这里图片选用unsplash.it网站上的-->
+
+                                </a>
+                            </div>
+                        </div>
+                    </div><!--m-padding这一句让每一个卡片间距变大一点 不要太密-->
+                    <!---------------------------第二个卡片----------------------------------->
+                    <div class="ui padded vertical segment m-padded-tb-mid">
+                        <!--卡片部分里面还要细分segment 这是一个 要点 你看原始的模板 就是分开的 这可以说是第一个卡片-->
+                        <!--为了让板式更好像模板 实际 你要这么写才不会跑版-->
+                        <!--首先 class 加 padded 使得 里面的内容离这个 segment 框 远一点-->
+                        <!--加一句vertical 使得 首先 那个 segment不在了 之后 你在 粘贴新的卡片过来，两个卡片之间还会自动帮你做出一个分割线-->
+                        <div class="ui grid"> <!--为什么不写 two column grid 因为那是均分-->
+                            <div class="eleven wide column">
+                                <h3 class="ui header">University of Pittsburgh food bar</h3>
+                                <p class="m-text">Fuel and Fuddle is a lively little joint in the heart of Oakland that
+                                    serves great
+                                    wild fire food and chilled beer on tap. A local food critic once described our food
+                                    as “upscale west coast bar food.” We have no idea what that means, but we like the
+                                    way it sounds.</p>
+
+                                <div class="ui grid">
+                                    <div class="ten wide column">
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d3036.541156209343!2d-79.95886068464749!3d40.441158062077356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e3!4m0!4m5!1s0x8834f229dcbd36dd%3A0x4d8b70af2248a0ef!2sFuel+and+Fuddle%2C+212+Oakland+Ave%2C+Pittsburgh%2C+PA+15213!3m2!1d40.441154!2d-79.956672!5e0!3m2!1szh-CN!2sus!4v1540509574584"
+                                                width="100%" height="115" frameborder="0" style="border:0"
+                                                allowfullscreen></iframe>
+                                    </div>
+                                    <div class="six wide column">
+                                        <br>
+
+                                        <img src="http://images.nymag.com/news/intelligencer/intelposts120326_starstruck_560.jpg"
+                                             alt="" style="width:150px; height:60px">
+                                        <br>
+                                        <p>1,003 customers reviews</p>
+                                    </div>
+                                </div>
+
+                                <div class="two column ui grid">
+                                    <div class="ui eleven wide column">
+                                        <div class="ui horizontal link list"> <!--link是因为这些属性是可以点击的 horizontal 是要放在一行-->
+                                            <div class="item">  <!--因为头像和 名字根在一起 相当于一个整体 所以 用item-->
+                                                <img src="./static/image/user1.jpg" alt="" class="ui avatar image"
+                                                     style="width:30px; height:30px"> <!--avatar image 放圆形小图（头像）-->
+                                                <div class="content">
+                                                    <div class="header">Qizhou</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="item">
+                                                <i class="calendar icon"></i> 2018-10-25
+                                            </div>
+                                            <div class="item">
+                                                <i class="eye icon"></i> 5044
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="right aligned five wide column">
+                                        <a href="#" , target="_blank" class="ui teal  label">Vegetarian</a>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="five wide column"><!--用来放图 注意 图片要是可以点击的链接式的 所以要用a-->
+                                <a href="#" target="_blank">
+                                    <img src="./static/image/food5.jpg" alt="" class="ui rounded image"
+                                         style="width:400px; height:320px">
+                                    <!--round 属性让图片以圆角的方式展开-->
+                                    <!--这里图片选用unsplash.it网站上的-->
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ui padded vertical segment m-padded-tb-mid">
+                        <!--卡片部分里面还要细分segment 这是一个 要点 你看原始的模板 就是分开的 这可以说是第一个卡片-->
+                        <!--为了让板式更好像模板 实际 你要这么写才不会跑版-->
+                        <!--首先 class 加 padded 使得 里面的内容离这个 segment 框 远一点-->
+                        <!--加一句vertical 使得 首先 那个 segment不在了 之后 你在 粘贴新的卡片过来，两个卡片之间还会自动帮你做出一个分割线-->
+                        <div class="ui grid"> <!--为什么不写 two column grid 因为那是均分-->
+                            <div class="eleven wide column">
+                                <h3 class="ui header">University of Pittsburgh food bar</h3>
+                                <p class="m-text">Fuel and Fuddle is a lively little joint in the heart of Oakland that
+                                    serves great
+                                    wild fire food and chilled beer on tap. A local food critic once described our food
+                                    as “upscale west coast bar food.” We have no idea what that means, but we like the
+                                    way it sounds.</p>
+
+                                <div class="ui grid">
+                                    <div class="ten wide column">
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d3036.541156209343!2d-79.95886068464749!3d40.441158062077356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e3!4m0!4m5!1s0x8834f229dcbd36dd%3A0x4d8b70af2248a0ef!2sFuel+and+Fuddle%2C+212+Oakland+Ave%2C+Pittsburgh%2C+PA+15213!3m2!1d40.441154!2d-79.956672!5e0!3m2!1szh-CN!2sus!4v1540509574584"
+                                                width="100%" height="115" frameborder="0" style="border:0"
+                                                allowfullscreen></iframe>
+                                    </div>
+                                    <div class="six wide column">
+                                        <br>
+
+                                        <img src="http://images.nymag.com/news/intelligencer/intelposts120326_starstruck_560.jpg"
+                                             alt="" style="width:150px; height:60px">
+                                        <br>
+                                        <p>1,003 customers reviews</p>
+                                    </div>
+                                </div>
+
+                                <div class="two column ui grid">
+                                    <div class="ui eleven wide column">
+                                        <div class="ui horizontal link list"> <!--link是因为这些属性是可以点击的 horizontal 是要放在一行-->
+                                            <div class="item">  <!--因为头像和 名字根在一起 相当于一个整体 所以 用item-->
+                                                <img src="./static/image/user1.jpg" alt="" class="ui avatar image"
+                                                     style="width:30px; height:30px"> <!--avatar image 放圆形小图（头像）-->
+                                                <div class="content">
+                                                    <div class="header">Qizhou</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="item">
+                                                <i class="calendar icon"></i> 2018-10-25
+                                            </div>
+                                            <div class="item">
+                                                <i class="eye icon"></i> 5044
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="right aligned five wide column">
+                                        <a href="#" , target="_blank" class="ui teal  label">Vegetarian</a>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="five wide column"><!--用来放图 注意 图片要是可以点击的链接式的 所以要用a-->
+                                <a href="#" target="_blank">
+                                    <img src="./static/image/food1.jpg" alt="" class="ui rounded image"
+                                         style="width:400px; height:320px">
+                                    <!--round 属性让图片以圆角的方式展开-->
+                                    <!--这里图片选用unsplash.it网站上的-->
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ui padded vertical segment m-padded-tb-mid">
+                        <!--卡片部分里面还要细分segment 这是一个 要点 你看原始的模板 就是分开的 这可以说是第一个卡片-->
+                        <!--为了让板式更好像模板 实际 你要这么写才不会跑版-->
+                        <!--首先 class 加 padded 使得 里面的内容离这个 segment 框 远一点-->
+                        <!--加一句vertical 使得 首先 那个 segment不在了 之后 你在 粘贴新的卡片过来，两个卡片之间还会自动帮你做出一个分割线-->
+                        <div class="ui grid"> <!--为什么不写 two column grid 因为那是均分-->
+                            <div class="eleven wide column">
+                                <h3 class="ui header">University of Pittsburgh food bar</h3>
+                                <p class="m-text">Fuel and Fuddle is a lively little joint in the heart of Oakland that
+                                    serves great
+                                    wild fire food and chilled beer on tap. A local food critic once described our food
+                                    as “upscale west coast bar food.” We have no idea what that means, but we like the
+                                    way it sounds.</p>
+
+                                <div class="ui grid">
+                                    <div class="ten wide column">
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d3036.541156209343!2d-79.95886068464749!3d40.441158062077356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e3!4m0!4m5!1s0x8834f229dcbd36dd%3A0x4d8b70af2248a0ef!2sFuel+and+Fuddle%2C+212+Oakland+Ave%2C+Pittsburgh%2C+PA+15213!3m2!1d40.441154!2d-79.956672!5e0!3m2!1szh-CN!2sus!4v1540509574584"
+                                                width="100%" height="115" frameborder="0" style="border:0"
+                                                allowfullscreen></iframe>
+                                    </div>
+                                    <div class="six wide column">
+                                        <br>
+
+                                        <img src="http://images.nymag.com/news/intelligencer/intelposts120326_starstruck_560.jpg"
+                                             alt="" style="width:150px; height:60px">
+                                        <br>
+                                        <p>1,003 customers reviews</p>
+                                    </div>
+                                </div>
+
+                                <div class="two column ui grid">
+                                    <div class="ui eleven wide column">
+                                        <div class="ui horizontal link list"> <!--link是因为这些属性是可以点击的 horizontal 是要放在一行-->
+                                            <div class="item">  <!--因为头像和 名字根在一起 相当于一个整体 所以 用item-->
+                                                <img src="./static/image/user1.jpg" alt="" class="ui avatar image"
+                                                     style="width:30px; height:30px"> <!--avatar image 放圆形小图（头像）-->
+                                                <div class="content">
+                                                    <div class="header">Qizhou</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="item">
+                                                <i class="calendar icon"></i> 2018-10-25
+                                            </div>
+                                            <div class="item">
+                                                <i class="eye icon"></i> 5044
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="right aligned five wide column">
+                                        <a href="#" , target="_blank" class="ui teal  label">Vegetarian</a>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="five wide column"><!--用来放图 注意 图片要是可以点击的链接式的 所以要用a-->
+                                <a href="#" target="_blank">
+                                    <img src="./static/image/food1.jpg" alt="" class="ui rounded image"
+                                         style="width:400px; height:320px">
+                                    <!--round 属性让图片以圆角的方式展开-->
+                                    <!--这里图片选用unsplash.it网站上的-->
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ui padded vertical segment m-padded-tb-mid">
+                        <!--卡片部分里面还要细分segment 这是一个 要点 你看原始的模板 就是分开的 这可以说是第一个卡片-->
+                        <!--为了让板式更好像模板 实际 你要这么写才不会跑版-->
+                        <!--首先 class 加 padded 使得 里面的内容离这个 segment 框 远一点-->
+                        <!--加一句vertical 使得 首先 那个 segment不在了 之后 你在 粘贴新的卡片过来，两个卡片之间还会自动帮你做出一个分割线-->
+                        <div class="ui grid"> <!--为什么不写 two column grid 因为那是均分-->
+                            <div class="eleven wide column">
+                                <h3 class="ui header">University of Pittsburgh food bar</h3>
+                                <p class="m-text">Fuel and Fuddle is a lively little joint in the heart of Oakland that
+                                    serves great
+                                    wild fire food and chilled beer on tap. A local food critic once described our food
+                                    as “upscale west coast bar food.” We have no idea what that means, but we like the
+                                    way it sounds.</p>
+
+                                <div class="ui grid">
+                                    <div class="ten wide column">
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d3036.541156209343!2d-79.95886068464749!3d40.441158062077356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e3!4m0!4m5!1s0x8834f229dcbd36dd%3A0x4d8b70af2248a0ef!2sFuel+and+Fuddle%2C+212+Oakland+Ave%2C+Pittsburgh%2C+PA+15213!3m2!1d40.441154!2d-79.956672!5e0!3m2!1szh-CN!2sus!4v1540509574584"
+                                                width="100%" height="115" frameborder="0" style="border:0"
+                                                allowfullscreen></iframe>
+                                    </div>
+                                    <div class="six wide column">
+                                        <br>
+
+                                        <img src="http://images.nymag.com/news/intelligencer/intelposts120326_starstruck_560.jpg"
+                                             alt="" style="width:150px; height:60px">
+                                        <br>
+                                        <p>1,003 customers reviews</p>
+                                    </div>
+                                </div>
+
+                                <div class="two column ui grid">
+                                    <div class="ui eleven wide column">
+                                        <div class="ui horizontal link list"> <!--link是因为这些属性是可以点击的 horizontal 是要放在一行-->
+                                            <div class="item">  <!--因为头像和 名字根在一起 相当于一个整体 所以 用item-->
+                                                <img src="./static/image/user1.jpg" alt="" class="ui avatar image"
+                                                     style="width:30px; height:30px"> <!--avatar image 放圆形小图（头像）-->
+                                                <div class="content">
+                                                    <div class="header">Qizhou</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="item">
+                                                <i class="calendar icon"></i> 2018-10-25
+                                            </div>
+                                            <div class="item">
+                                                <i class="eye icon"></i> 5044
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="right aligned five wide column">
+                                        <a href="#" , target="_blank" class="ui teal  label">Vegetarian</a>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="five wide column"><!--用来放图 注意 图片要是可以点击的链接式的 所以要用a-->
+                                <a href="#" target="_blank">
+                                    <img src="./static/image/food1.jpg" alt="" class="ui rounded image"
+                                         style="width:400px; height:320px">
+                                    <!--round 属性让图片以圆角的方式展开-->
+                                    <!--这里图片选用unsplash.it网站上的-->
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+                <div class="ui bottom attached segment"><!--所有他实际上是由三部分组成的 这个是底部 负责上下翻页 由 左右组成-->
+                    <div class="ui middle aligned two column grid">
+                        <div class="column">
+                            <a href="#" class="teal ui basic button">Previous</a>
+                        </div>
+
+                        <div class="right aligned column">
+                            <a href="" class="teal ui basic button">Next</a> <!--写了 basic button 会变成没有填充的-->
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!--右边的5份-->
+            <div class="five wide column">
+                <!--同样按照之前讲的格式 要先写segment-->
+                <!------------------------------分类的部分------------------------------------------------->
+                <div class="ui segments">
+                    <!--在右边的第一部分 分类card 类似左边（top segment/ 一系列vertical segment/bottom segments）的过程 他是由 几个segment组成的 放在一个div里面去-->
+                    <div class="ui secondary segment"> <!--secondary 使得 那个 框背景 不是白色了 是灰色 具体要求不一样-->
+                        <div class="ui two column grid">
+                            <div class="column"><i class="idea icon"></i>Category</div>
+                            <div class="right aligned column"><a href="#" target="_blank">more <i
+                                    class="angle double right icon"></i></a></div>
+                        </div>
+                    </div>
+
+                    <div class="ui teal segment"><!--第二个segments 直接给颜色就能起到分割线上色的效果-->
+                        <div class="ui fluid vertical menu"> <!--是一个竖着的菜单 fluid 是为了 填充他的外层容器就是这个segment-->
+                            <a href="#" class="item">
+                                Mexican
+                                <div class="ui teal left pointing label">
+                                    <!--label 是后面的这个每一个分类的数量 好像有了label 就相当于自然会向右边去 left pointing 就是那个小三角-->
+                                    13
+                                </div>
+                            </a>
+                            <a href="#" class="item">
+                                Chinese
+                                <div class="ui teal left pointing label">
+                                    <!--label 是后面的这个每一个分类的数量 好像有了label 就相当于自然会向右边去 left pointing 就是那个小三角-->
+                                    30
+                                </div>
+                            </a>
+                            <a href="#" class="item">
+                                American
+                                <div class="ui teal left pointing label">
+                                    <!--label 是后面的这个每一个分类的数量 好像有了label 就相当于自然会向右边去 left pointing 就是那个小三角-->
+                                    50
+                                </div>
+                            </a>
+                            <a href="#" class="item">
+                                Indian
+                                <div class="ui teal left pointing label">
+                                    <!--label 是后面的这个每一个分类的数量 好像有了label 就相当于自然会向右边去 left pointing 就是那个小三角-->
+                                    25
+                                </div>
+                            </a>
+                            <a href="#" class="item">
+                                Thai
+                                <div class="ui teal left pointing label">
+                                    <!--label 是后面的这个每一个分类的数量 好像有了label 就相当于自然会向右边去 left pointing 就是那个小三角-->
+                                    16
+                                </div>
+                            </a>
+                            <a href="#" class="item">
+                                Korean
+                                <div class="ui teal left pointing label">
+                                    <!--label 是后面的这个每一个分类的数量 好像有了label 就相当于自然会向右边去 left pointing 就是那个小三角-->
+                                    9
+                                </div>
+                            </a>
+                            <a href="#" class="item">
+                                Japanese
+                                <div class="ui teal left pointing label">
+                                    <!--label 是后面的这个每一个分类的数量 好像有了label 就相当于自然会向右边去 left pointing 就是那个小三角-->
+                                    10
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!--------------------------标签部分---------------------------------------->
+
+                <div class="ui segments m-margin-tb-large">
+                    <div class="ui secondary segment"> <!--把分类那部分的直接复制过来-->
+                        <div class="ui two column grid">
+                            <div class="column"><i class="tags icon"></i>Tags</div>
+                            <div class="right aligned column"><a href="#" target="_blank">more <i
+                                    class="angle double right icon"></i></a></div>
+                        </div>
+                    </div>
+                    <div class="ui teal segment"> <!--标签就是label-->
+                        <a href="#" target="_blank" class="ui teal  left pointing label m-margin-tb-mini"> <!>
+                            Steak
+                            <div class="detail">18</div>
+                            <!--用detail 而不是在写一个数字 就是 为了让他们作为一个整体label detail是指label 的details-->
+                        </a>
+                        <a href="#" target="_blank" class="ui teal  left pointing label m-margin-tb-mini">
+                            Vegetarian
+                            <div class="detail">25</div>
+                            <!--用detail 而不是在写一个数字 就是 为了让他们作为一个整体label detail是指label 的details-->
+                        </a>
+                        <a href="#" target="_blank" class="ui teal  left pointing label m-margin-tb-mini">
+                            Sandwiches
+                            <div class="detail">10</div>
+                            <!--用detail 而不是在写一个数字 就是 为了让他们作为一个整体label detail是指label 的details-->
+                        </a>
+                        <a href="#" target="_blank" class="ui teal  left pointing label m-margin-tb-mini">
+                            Burgers
+                            <div class="detail">29</div>
+                            <!--用detail 而不是在写一个数字 就是 为了让他们作为一个整体label detail是指label 的details-->
+                        </a>
+                        <a href="#" target="_blank" class="ui teal  left pointing label m-margin-tb-mini">
+                            Pizza
+                            <div class="detail">40</div>
+                            <!--用detail 而不是在写一个数字 就是 为了让他们作为一个整体label detail是指label 的details-->
+                        </a>
+                        <a href="#" target="_blank" class="ui teal  left pointing label m-margin-tb-mini">
+                            Seafood
+                            <div class="detail">12</div>
+                            <!--用detail 而不是在写一个数字 就是 为了让他们作为一个整体label detail是指label 的details-->
+                        </a>
+                    </div>
+                </div>
+
+                <!--------------------------最新推荐---------------------------------------->
+                <div class="ui segments">
+                    <div class="ui secondary segment"> <!--secondary 使得 那个 框背景 不是白色了 是灰色 具体要求不一样-->
+                        <div class="ui grid">
+                            <div class="ten wide column">
+                                <i class="idea icon"></i>New Recommendation
+                            </div>
+                            <div class="right aligned six wide column">
+                                <a href="#" target="_blank">more <i
+                                        class="angle double right icon"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui segment">
+                        <a href="" target="_blank" class = "m-orange  m-text-bold">Duncan St Sandwich Shop</a>
+                    </div>
+                    <div class="ui segment ">
+                        <a href="" target="_blank" class = "m-orange m-text-bold">Azulé Taqueria</a>
+                    </div>
+                    <div class="ui segment ">
+                        <a href="" target="_blank" class = "m-orange m-text-bold">Silverlake Ramen</a>
+                    </div>
+                    <div class="ui segment ">
+                        <a href="" target="_blank" class = "m-orange m-text-bold">Night Fish Sushi and Asian Cuisine</a>
+                    </div>
+                    <div class="ui segment">
+                        <a href="" target="_blank" class = "m-orange m-text-bold">Kolkhida</a>
+                    </div>
+                    <div class="ui segment">
+                        <a href="" target="_blank" class = "m-orange m-text-bold">The Chai Spot</a>
+                    </div>
+                </div>
+
+                <!--------------------------Dish pictures---------------------------------------->
+                <!--这一部分 要出一个类似分割线的效果 所以注意看的下面的变化-->
+                <div class="ui horizontal divider head m-margin-tb-large">
+                    Dish Pictures
+                </div>
+                <div class="ui centered card " > <!--图片以卡片的形式排列-->
+                    <img src="./static/image/dish4.jpg" alt="" class="ui rounded image" style= "width:300px; height:350px">
+                    <!--这里 要说一下 图片大小调整 和 居中 都要放在卡片的属性， 否则你会看到 图片不能占满整个卡片-->
+                    <!--外层会有一个框（卡片），图片占一部分，剩下大半空白的部分-->
+                </div>
+                <div class="ui centered card m-margin-tb-large" > <!--图片以卡片的形式排列-->
+                    <img src="./static/image/dish2.jpg" alt="" class="ui rounded image" style= "width:300px; height:350px">
+                    <!--这里 要说一下 图片大小调整 和 居中 都要放在卡片的属性， 否则你会看到 图片不能占满整个卡片-->
+                    <!--外层会有一个框（卡片），图片占一部分，剩下大半空白的部分-->
+                </div>
+                <div class="ui centered card m-margin-tb-large" > <!--图片以卡片的形式排列-->
+                    <img src="./static/image/Dish3.jpg" alt="" class="ui rounded image" style= "width:300px; height:350px">
+                    <!--这里 要说一下 图片大小调整 和 居中 都要放在卡片的属性， 否则你会看到 图片不能占满整个卡片-->
+                    <!--外层会有一个框（卡片），图片占一部分，剩下大半空白的部分-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<!------------------------bottom footer part-------------------------------------->
+<footer class="ui inverted vertical segment m-padded-tb-massive"> <!-- vertical的意义类似于 attached -->
+    <!--m-paddin那个 还是自己加的 让文字部分 和 黑色部分上 下的间距拉大-->
+    <div class="ui center aligned container"> <!--卸了 center aligned 那么每一个格子中 文字才会在中间出现 不同的原件 会出现在不同的行 但总是中心位置-->
+        <div class="ui inverted divided grid"> <!---divided 就是分个线-->
+            <div class="three wide column">
+                <div class="ui inverted link list"><!--加入 link 才能让里面的一行行变成链接的样子 鼠标变手-->
+                    <div class="item">
+                        <img src="./static/image/footer1.jpg" class="ui rounded image"
+                             alt="This image cant not be showed" style="width: 150px; height: 200px">
+                    </div>
+
+                </div>
+
+
+            </div>   <!--注意他总共十16份-->
+            <div class="four wide column">
+                <div class="ui inverted link list"><!--加入 link 才能让里面的一行行变成链接的样子 鼠标变手-->
+                    <h4 class="ui inverted header m-text-spaced ">New Restaruant reviews</h4>
+                    <a href="#" class="item">Category</a>
+                    <a href="#" class="item">Tags</a>
+                    <a href="#" class="item">Find more</a>
+                </div>
+            </div>
+            <div class="four wide column">
+                <div class="ui inverted link list">
+                    <h4 class="ui inverted header m-text-spaced ">About us</h4>
+                    <a href="#" class="item">Project description</a>
+                    <a href="#" class="item"></a>
+                    <a href="#" class="item">Contact Us</a>
+                </div>
+            </div>
+            <div class="five wide column">
+                <h4 class="ui inverted header m-text-spaced ">The yelp online helper website</h4>
+                <p class="m-opacity-mini">This is a Searching website serves some same functions as Yelp. It also
+                    provide
+                    new searching method based on the images input by the users
+                </p>
+            </div>
+        </div>
+
+        <div class="ui inverted section divider ">  <!--这个div 就是用来加入下方的分割线的-->
+            <p>
+            <div class="copyright m-text-thin m-text-spaced m-opacity-mini">
+                Copyright @ 2018-2019 Information Retrieval & Storage Designed by Group
+            </div>
+
+
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<!--一个jquery 是从jsDeliver这个网站中引入的-->
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.0/dist/semantic.min.js"></script>
+</body>
+</html>
