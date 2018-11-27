@@ -22,12 +22,17 @@ import com.google.protobuf.ByteString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.ui.ModelMap;
-import org.springframework.util.StreamUtils;
+import com.google.cloud.vision.v1.Feature.Type;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 @RestController
 public class VisionController {
@@ -45,13 +50,17 @@ public class VisionController {
      * @throws Exception if the Vision API call produces an error
      */
     @GetMapping("/vision")
-    public ModelAndView uploadImage(String imageUrl, ModelMap map) throws Exception {
+    public ModelAndView uploadImage(String imageUrl, ModelMap map) throws Exception, IOException {
         // Copies the content of the image to memory.
-        byte[] imageBytes = StreamUtils.copyToByteArray(this.resourceLoader.getResource(imageUrl).getInputStream());
+
+//        byte[] imageBytes = StreamUtils.copyToByteArray(this.resourceLoader.getResource(imageUrl).getInputStream());
 
         BatchAnnotateImagesResponse responses;
 
-        Image image = Image.newBuilder().setContent(ByteString.copyFrom(imageBytes)).build();
+        ByteString imgBytes = ByteString.readFrom(resourceLoader.getResource("file:"+imageUrl).getInputStream());
+        Image image = Image.newBuilder().setContent(imgBytes).build();
+
+//        Image image = Image.newBuilder().setContent(ByteString.copyFrom(imageBytes)).build();
 
         // Sets the type of request to label detection, to detect broad sets of categories in an image.
         Feature feature = Feature.newBuilder().setType(Feature.Type.LABEL_DETECTION).build();
@@ -73,5 +82,34 @@ public class VisionController {
         map.addAttribute("imageUrl", imageUrl);
 
         return new ModelAndView("result", map);
+    }
+
+    public static void detectLabels(String filePath, PrintStream out) throws Exception, IOException {
+        List<AnnotateImageRequest> requests = new ArrayList<>();
+
+        ByteString imgBytes = ByteString.readFrom(new FileInputStream(filePath));
+
+        Image img = Image.newBuilder().setContent(imgBytes).build();
+        Feature feat = Feature.newBuilder().setType(Type.LABEL_DETECTION).build();
+        AnnotateImageRequest request =
+                AnnotateImageRequest.newBuilder().addFeatures(feat).setImage(img).build();
+        requests.add(request);
+
+        try (ImageAnnotatorClient client = ImageAnnotatorClient.create()) {
+            BatchAnnotateImagesResponse response = client.batchAnnotateImages(requests);
+            List<AnnotateImageResponse> responses = response.getResponsesList();
+
+            for (AnnotateImageResponse res : responses) {
+                if (res.hasError()) {
+                    out.printf("Error: %s\n", res.getError().getMessage());
+                    return;
+                }
+
+                // For full list of available annotations, see http://g.co/cloud/vision/docs
+                for (EntityAnnotation annotation : res.getLabelAnnotationsList()) {
+                    annotation.getAllFields().forEach((k, v) -> out.printf("%s : %s\n", k, v.toString()));
+                }
+            }
+        }
     }
 }
