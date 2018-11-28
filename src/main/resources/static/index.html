@@ -1,14 +1,398 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Google Cloud Vision API with Spring code sample</title>
+    <meta name="author" content="Team3 (Jiajun Chen,Yingfei Shen,Jianing He,Mengyu Yin)">
+    <meta charset="utf-8">
+    <title>Responsive design web site</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel="manifest" href="assets/icons/upmc-icons/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" type="image/x-icon" href="assets/icons/upmc-icons/favicon.ico">
+    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheets/index.css">
+    <link rel="stylesheet" href="lib/jquery-ui-1.12.1/jquery-ui.css">
+    <script src="lib/jquery-3.2.1.js"></script>
+    <script src="lib/jquery-ui-1.12.1/jquery-ui.js"></script>
+    <script src="js/index.js"></script>
 </head>
 <body>
-<div>
-    <form action="/vision">
-        URL of image to be uploaded: <input type="text" name="imageUrl"/> <input type="submit" />
-    </form>
-</div>
+<header>
+    <section class="header-wrapper">
+        <nav class="header-left-nav">
+            <ul class="header-list">
+                <li><a href="https://en.wikipedia.org/wiki/Responsive_web_design">Get More information </a></li>
+                <li><a href="https://designmodo.com/responsive-design-examples/">Get more information about the auther</a></li>
+                <li><a href="https://www.zhihu.com/question/20628050">Find more inofmation in Chinese web site</a></li>
+                <li><a href="tel:412-616-6745">1-800-533-8762(Yelp customer center)</a></li>
+            </ul>
+        </nav>
+        <nav class="header-right-nav">
+            <ul class="header-list">
+                <li id="not-logged-in">
+                    <a href="login.html">
+                        <i class="fab fa-facebook"></i>
+                        <span> Login to view more     </span>
+                    </a>
+                    <ul class="dropdown-content">
+                        <li><a href="login.html">Log In</a></li>
+                        <li><a href="login.html">Register</a></li>
+                    </ul>
+                </li>
+
+
+            </ul>
+        </nav>
+    </section>
+    <section class="img-wrapper">
+        <a href="index.html">
+            <img class="logo center" src="assets/images/yelp1.jpg">
+        </a>
+    </section>
+</header>
+<nav class="nav-bar">
+    <ul class="nav-list">
+        <li class="hide-imgs hide logo-sticky">
+            <a href="index.html">
+                <img src="assets/images/upmc-1.png">
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="category.html">Home</a>
+            <ul class="dropdown-content">
+                <li><a href="category.html">Yelp </a></li>
+                <li><a href="category.html">Google Vision</a></li>
+
+            </ul>
+        </li>
+        <li class="menu-item" >
+            <a href="error.html">Menus</a>
+            <ul class="dropdown-content">
+
+                <li><a href="https://www.bmw.com/en/automotive-life.html">Chinese food</a></li>
+                <li><a href="https://www.susanjeanrobertson.com/">Indian food</a></li>
+                <li><a href="https://www.milwaukeeballet.org/">American food</a></li>
+                <li><a href="https://2017.cssconf.eu/">Italian food</a></li>
+                <li><a href="http://radesign.in/">drinks</a></li>
+            </ul>
+        </li>
+        <li class="menu-item">
+            <a href="error.html">Restaurant</a>
+            <ul class="dropdown-content">
+                <li><a href="error.html">Pittsburgh</a></li>
+                <li><a href="error.html">New York</a></li>
+                <li><a href="error.html">San Francisco</a></li>
+                <li><a href="error.html">Boston</a></li>
+            </ul>
+        </li>
+        <li class="menu-item">
+            <a href="error.html">Online order</a>
+            <ul class="dropdown-content">
+                <li><a href="error.html">Order</a></li>
+                <li><a href="error.html">Deliver</a></li>
+                <li><a href="error.html">Problems?</a></li>
+                <li><a href="error.html">Refund</a></li>
+
+            </ul>
+        </li>
+        <li class="menu-item">
+            <a href="error.html">About us</a>
+        </li>
+
+        <li class="hide-imgs hide search-sticky">
+            <a id="search-button">
+                <img class="cart-icon" src="assets/icons/search.png"/>
+            </a>
+        </li>
+        <li id="nav-account" class="hide-imgs hide avatar-sticky">
+        </li>
+        <li class="hide-imgs hide cart-sticky">
+            <a href="cart.html">
+                <img class="cart-icon" src="assets/icons/shopping-cart.png"/>
+            </a>
+            <ul class="dropdown-content">
+                <li><a href="cart.html">View Cart</a></li>
+                <li><a href="cart.html">Check Out</a></li>
+            </ul>
+        </li>
+    </ul>
+    <div class="purple-banner"></div>
+    <section class="nav-search" id="nav-search">
+        <div class="search-area">
+            <div class="search-box">
+                <label for="search-item-nav"></label>
+                URL of image to be uploaded: <input id="search-item-nav" class="search-input" type="search" placeholder="Search products by name or keywords">
+                <a href="search-result.html"><button>Search</button></a>
+            </div>
+        </div>
+    </section>
+</nav>
+<main>
+    <section class="search-section">
+        <img class="search-bg-img" src="assets/images/1.jpg">
+        <div class="search-area">
+            <div class="search-box">
+                <!--<img src="assets/icons/search.png"/>-->
+                <form action="/vision">
+                    <label for="search-item"></label>
+                    <input id="search-item" class="search-input" type="search" name = "imageUrl" placeholder="Search by image"/>
+                    <button class="btn btn-outline-success my-2 my-width" type="submit">Search</button>
+                </form>
+
+            </div>
+        </div>
+    </section>
+    <section class="empty-banner">
+        <div>View meals by Category</div>
+    </section>
+    <section class="category-section">
+        <article>
+            <div class="item">
+                <div class="bg-layer-wrapper">
+                    <div class="background-layer"></div>
+                    <div class="overlay-text">
+                        <div class="overlay-heading">Chinese <br> & <br> Japanese</div>
+                        <a class="category-button-link" href="category.html">View</a>
+                    </div>
+                </div>
+                <a class="category-link" href="category.html"></a>
+                <div class="bg-img">
+                    <img src="assets/images/Chinese.jpg">
+                </div>
+            </div>
+        </article>
+    </section>
+    <section class="category-section">
+        <article>
+            <div class="item">
+                <div class="bg-layer-wrapper lay-right">
+                    <div class="background-layer"></div>
+                    <div class="overlay-text">
+                        <div class="overlay-heading">American food</div>
+                        <a class="category-button-link" href="category.html">View</a>
+                    </div>
+                </div>
+                <a class="category-link" href="category.html"></a>
+                <div class="bg-img">
+                    <img src="assets/images/Amercian.jpg">
+                </div>
+            </div>
+        </article>
+    </section>
+    <section class="category-section">
+        <article>
+            <div class="item">
+                <div class="bg-layer-wrapper">
+                    <div class="background-layer"></div>
+                    <div class="overlay-text">
+                        <div class="overlay-heading">India <br> dish</div>
+                        <a class="category-button-link" href="category.html">View</a>
+                    </div>
+                </div>
+                <a class="category-link" href="category.html"></a>
+                <div class="bg-img">
+                    <img src="assets/images/India.jpg">
+                </div>
+            </div>
+        </article>
+    </section>
+    <section class="category-section">
+        <article>
+            <div class="item">
+                <div class="bg-layer-wrapper lay-right">
+                    <div class="background-layer"></div>
+                    <div class="overlay-text">
+                        <div class="overlay-heading">Seafood <br> Lobster</div>
+                        <a class="category-button-link" href="category.html">View</a>
+                    </div>
+                </div>
+                <a class="category-link" href="category.html"></a>
+                <div class="bg-img">
+                    <img src="assets/images/seafood.jpg">
+                </div>
+            </div>
+        </article>
+    </section>
+    <section class="empty-banner">
+        <div></div>
+    </section>
+    <section class="promo-section">
+        <div class="left-block">
+            <a href="error.html"  class="link-wrapper tag-click">
+                <img class="left-block-img" src="assets/images/deal.jpg">
+                <div class="popin-down">
+                    <div class="popin-down-title">
+                        <h2 class="title">
+                            Weekly Discounts
+                        </h2>
+                    </div>
+                    <div class="popin-down-description">
+                        <p class="description-push-text">
+                            New discounts arriving weekly
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="right-block">
+            <a href="error.html">
+                <div class="delivery-block">
+                    <div class="delivery-centered">
+                        <div class="box-wrapper">
+                            <div class="box-title">
+                                <h2 class="box-title-text">
+                                    ORDER DELIVERY
+                                </h2>
+                            </div>
+                            <div class="box-description">
+                                <p class="box-description-text">
+                                    Deliver to home or order in restaurants
+                                    <br>
+                                    <span>*on selected items</span>
+                                </p>
+                            </div>
+                            <span class="box-button">Discover Meals</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="error.html">
+                <div class="carefinder-block">
+                    <div class="image-wrapper">
+                        <img src="assets/images/yelp2.png">
+                    </div>
+                    <div class="popin-down">
+                        <div class="popin-down-title">
+                            <h2 class="title">
+                                Online Order Center®
+                            </h2>
+                        </div>
+                        <div class="popin-down-description">
+                            <p class="description-push-text">
+                                More than 1000 restaurants are here to help you.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+</main>
+<footer class="footer">
+    <div class="block-wrapper">
+        <div class="footer-subscribe">
+            <div class="footer-newsletter">
+                <h3 class="footer-title">Let’s keep the conversation going</h3>
+                <p>Receive our newsletter and weekly deals.</p>
+            </div>
+            <form method="POST" action="#" class="footer-action clearfix">
+                <div class="form-input">
+                    <input type="email" name="newsletter-email" placeholder="Email" class="form-text form-email" size="60" maxlength="128">
+                </div>
+                <button class="button">Subscribe</button>
+            </form>
+            <div class="footer-legal">
+                <p> By subscribing to our newsletter, you agree that your data will be processed in compliance with our <a href="">General Terms and Conditions of Use</a> and our <a href="">Privacy Policy</a>.          </p>
+            </div>
+        </div>
+        <div class="block block-footer-menus first odd" data-personalize-entity-id="block/146">
+            <nav class="footer-nav">
+                <div class="footer-nav-col">
+                    <h3 class="title-small">Services</h3>
+                    <ul>
+                        <li>
+                            <a href="http://www.upmc.com/contact/Pages/default.aspx" data-tray-trigger="tray-help">Contact Us</a>
+                        </li>
+                        <li>
+                            <a href="http://www.upmc.com/Services/rehab/rehab-institute/for-patients/Pages/faq.aspx">FAQ</a>
+                        </li>
+                        <li>
+                            <a href="http://www.upmc.com/Services/pharmacy/Pages/default.aspx">Find a Resaurant</a>
+                        </li>
+                        <li>
+                            <a href="https://myupmc.upmc.com/">Recommendation</a>
+                        </li>
+                        <li>
+                            <a href="http://www.upmc.com/services/urgent-care/pages/default.aspx">Yelp Website</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-nav-col">
+                    <h3 class="title-small">Orders to go</h3>
+                    <ul>
+                        <li>
+                            <a href="policy.html">Payment</a>
+                        </li>
+                        <li>
+                            <a href="policy.html">Shipping</a>
+                        </li>
+                        <li>
+                            <a href="policy.html">Collect in store</a>
+                        </li>
+                        <li>
+                            <a href="policy.html">Track orders</a>
+                        </li>
+                        <li>
+                            <a href="policy.html">Exchange & returns</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-nav-col">
+                    <h3 class="title-small">Information Retrieval team</h3>
+                    <ul>
+                        <li>
+                            <a href="http://www.upmc.com/Services/Pages/default.aspx">Our system Services</a>
+                        </li>
+                        <li>
+                            <a href="http://careers.upmc.com/">Join us</a>
+                        </li>
+                        <li>
+                            <a href="http://www.upmc.com/patients-visitors/paying-bill/services/Pages/apply.aspx">Development</a>
+                        </li>
+                        <li>
+                            <a href="https://www.upmchealthplan.com/">Future plan</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-nav-col">
+                    <h3 class="title-small">Legal</h3>
+                    <ul>
+                        <li>
+                            <a href="http://www.upmc.com/patients-visitors/privacy-info/Pages/terms-of-use.aspx">Terms and conditions</a>
+                        </li>
+                        <li>
+                            <a href="http://www.upmc.com/patients-visitors/privacy-info/Pages/default.aspx">Privacy & cookies</a>
+                        </li>
+                        <li>
+                            <a href="http://www.upmc.com/patients-visitors/privacy-info/Pages/terms-of-use.aspx#advice">Copyright of this website</a>
+                        </li>
+                        <li>
+                            <a href="http://www.upmc.com/patients-visitors/privacy-info/Pages/alerts.aspx">Legal issues of Google vision API</a>
+                        </li>
+                        <li>
+                            <a href="http://www.upmc.com/patients-visitors/privacy-info/Pages/terms-of-use.aspx">Legal issues of Yelp API</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="block block-footer-social last even" data-personalize-entity-id="block/151">
+            <div class="footer-copyright">
+                <div class="footer-rights">
+                    <p>
+                        University of Pittsburgh Information Retrieval 2018. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-logo">
+            <img src="assets/images/yelp1.jpg">
+        </div>
+    </div>
+</footer>
 </body>
 </html>
