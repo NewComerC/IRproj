@@ -22,6 +22,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <jackson.verison>2.9.5</jackson.verison>
+        <commons.version>3.7</commons.version>
         <spring-cloud.version>Greenwich.M3</spring-cloud.version>
     </properties>
 
@@ -52,6 +54,36 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
+        <!--&lt;!&ndash; https://mvnrepository.com/artifact/io.github.ranga543/yelp-fusion-client &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>io.github.ranga543</groupId>-->
+            <!--<artifactId>yelp-fusion-client</artifactId>-->
+            <!--<version>0.1.4</version>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.verison}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.verison}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons.version}</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -84,7 +116,9 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
+
     </repositories>
+
 
 
 </project>

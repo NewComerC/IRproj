@@ -16,31 +16,39 @@
 
 package com.cjm.moni;
 
+import com.cjm.moni.entity.parameters.BusinessSearchParameters;
+import com.cjm.moni.entity.response.BusinessSearchResponse;
+import com.cjm.moni.service.YelpApi;
 import com.google.cloud.vision.v1.*;
 import com.google.common.collect.ImmutableMap;
 import com.google.protobuf.ByteString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.ui.ModelMap;
-import com.google.cloud.vision.v1.Feature.Type;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.io.FileInputStream;
+
 import java.io.IOException;
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
+import java.util.HashSet;
+
 
 @RestController
+
 public class VisionController {
     @Autowired
     private ResourceLoader resourceLoader;
 
     @Autowired
     private ImageAnnotatorClient imageAnnotatorClient;
+
+    @Autowired
+    private YelpApi yelpApi;
 
     /**
      * This method downloads an image from a URL and sends its contents to the Vision API for label detection.
@@ -73,7 +81,13 @@ public class VisionController {
             AnnotateImageResponse response = responses.getResponses(0);
 
             ImmutableMap.Builder<String, Float> annotations = ImmutableMap.builder();
+
+            HashSet<String> tags=new HashSet<>();
             for (EntityAnnotation annotation : response.getLabelAnnotationsList()) {
+                String tag=annotation.getDescription();
+                if(tags.contains(tag)) continue;
+                else tags.add(tag);
+
                 annotations.put(annotation.getDescription(), annotation.getScore());
             }
             map.addAttribute("annotations", annotations.build());
@@ -84,32 +98,11 @@ public class VisionController {
         return new ModelAndView("result", map);
     }
 
-    public static void detectLabels(String filePath, PrintStream out) throws Exception, IOException {
-        List<AnnotateImageRequest> requests = new ArrayList<>();
+    @PostMapping("/test")
+    public BusinessSearchResponse test(@RequestBody BusinessSearchParameters parameters) throws Exception{
+//        BusinessSearchParameters parameters=new BusinessSearchParameters();
 
-        ByteString imgBytes = ByteString.readFrom(new FileInputStream(filePath));
-
-        Image img = Image.newBuilder().setContent(imgBytes).build();
-        Feature feat = Feature.newBuilder().setType(Type.LABEL_DETECTION).build();
-        AnnotateImageRequest request =
-                AnnotateImageRequest.newBuilder().addFeatures(feat).setImage(img).build();
-        requests.add(request);
-
-        try (ImageAnnotatorClient client = ImageAnnotatorClient.create()) {
-            BatchAnnotateImagesResponse response = client.batchAnnotateImages(requests);
-            List<AnnotateImageResponse> responses = response.getResponsesList();
-
-            for (AnnotateImageResponse res : responses) {
-                if (res.hasError()) {
-                    out.printf("Error: %s\n", res.getError().getMessage());
-                    return;
-                }
-
-                // For full list of available annotations, see http://g.co/cloud/vision/docs
-                for (EntityAnnotation annotation : res.getLabelAnnotationsList()) {
-                    annotation.getAllFields().forEach((k, v) -> out.printf("%s : %s\n", k, v.toString()));
-                }
-            }
-        }
+        return yelpApi.searchBusiness(parameters);
     }
+
 }
