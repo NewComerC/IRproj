@@ -47,6 +47,8 @@ public class BusinessSearchParameters implements Parameters {
     private Integer openAt;
 //    private List<Attribute> attributes;
 
+
+
     public String getParameters() throws NullParameterException, InvalidParameterException {
         StringBuilder builder = new StringBuilder("?");
 
@@ -122,5 +124,11 @@ public class BusinessSearchParameters implements Parameters {
 //        }
 
         return builder.toString();
+    }
+
+    public BusinessSearchParameters(String term, String location, SortBy sortBy) {
+        this.term = term;
+        this.location = location;
+        this.sortBy = sortBy;
     }
 }

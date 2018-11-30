@@ -14,7 +14,7 @@
         * limitations under the License.
         */
 
-package com.cjm.moni;
+package com.cjm.moni.web;
 
 import com.cjm.moni.entity.parameters.BusinessSearchParameters;
 import com.cjm.moni.entity.response.BusinessSearchResponse;
@@ -25,10 +25,8 @@ import com.google.protobuf.ByteString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -52,19 +50,19 @@ public class VisionController {
     /**
      * This method downloads an image from a URL and sends its contents to the Vision API for label detection.
      *
-     * @param imageUrl the URL of the image
+     *
      * @return a string with the list of labels and percentage of certainty
      * @throws Exception if the Vision API call produces an error
      */
-    @GetMapping("/vision")
-    public ModelAndView uploadImage(String imageUrl, ModelMap map) throws Exception, IOException {
+    @PostMapping("/vision")
+    public ModelAndView uploadImage(@RequestBody @RequestParam("uploadFile") MultipartFile uploadFile) throws Exception, IOException {
         // Copies the content of the image to memory.
-
-//        byte[] imageBytes = StreamUtils.copyToByteArray(this.resourceLoader.getResource(imageUrl).getInputStream());
 
         BatchAnnotateImagesResponse responses;
 
-        ByteString imgBytes = ByteString.readFrom(resourceLoader.getResource("file:"+imageUrl).getInputStream());
+        ModelMap map=new ModelMap();
+
+        ByteString imgBytes = ByteString.readFrom(uploadFile.getInputStream());
         Image image = Image.newBuilder().setContent(imgBytes).build();
 
 //        Image image = Image.newBuilder().setContent(ByteString.copyFrom(imageBytes)).build();
@@ -92,10 +90,57 @@ public class VisionController {
             map.addAttribute("annotations", annotations.build());
         }
 
-        map.addAttribute("imageUrl", imageUrl);
+        map.addAttribute("imageUrl", "https://cloud.google.com/vision/docs/images/demo-image.jpg");
+
+
+
+//        BusinessSearchParameters businessSearchParameters=new BusinessSearchParameters("pittsburgh","")
 
         return new ModelAndView("result", map);
     }
+
+//    @GetMapping("/vision")
+//    public ModelAndView uploadImage(String imageUrl, ModelMap map) throws Exception, IOException {
+//        // Copies the content of the image to memory.
+//
+////        byte[] imageBytes = StreamUtils.copyToByteArray(this.resourceLoader.getResource(imageUrl).getInputStream());
+//
+//        BatchAnnotateImagesResponse responses;
+//
+//        ByteString imgBytes = ByteString.readFrom(resourceLoader.getResource("file:"+imageUrl).getInputStream());
+//        Image image = Image.newBuilder().setContent(imgBytes).build();
+//
+////        Image image = Image.newBuilder().setContent(ByteString.copyFrom(imageBytes)).build();
+//
+//        // Sets the type of request to label detection, to detect broad sets of categories in an image.
+//        Feature feature = Feature.newBuilder().setType(Feature.Type.LABEL_DETECTION).build();
+//        AnnotateImageRequest request =
+//                AnnotateImageRequest.newBuilder().setImage(image).addFeatures(feature).build();
+//        responses = this.imageAnnotatorClient.batchAnnotateImages(Collections.singletonList(request));
+//
+//        // We're only expecting one response.
+//        if (responses.getResponsesCount() == 1) {
+//            AnnotateImageResponse response = responses.getResponses(0);
+//
+//            ImmutableMap.Builder<String, Float> annotations = ImmutableMap.builder();
+//
+//            HashSet<String> tags=new HashSet<>();
+//            for (EntityAnnotation annotation : response.getLabelAnnotationsList()) {
+//                String tag=annotation.getDescription();
+//                if(tags.contains(tag)) continue;
+//                else tags.add(tag);
+//
+//                annotations.put(annotation.getDescription(), annotation.getScore());
+//            }
+//            map.addAttribute("annotations", annotations.build());
+//        }
+//
+//        map.addAttribute("imageUrl", imageUrl);
+//
+//        return new ModelAndView("result", map);
+//    }
+
+
 
     @PostMapping("/test")
     public BusinessSearchResponse test(@RequestBody BusinessSearchParameters parameters) throws Exception{
