@@ -41,7 +41,7 @@ public class BusinessSearchParameters implements Parameters {
     private Locale locale;
     private Integer limit;
     private Integer offset;
-//    private SortBy sortBy;
+    private SortBy sortBy;
     private List<Integer> price;
     private Boolean openNow;
     private Integer openAt;
@@ -98,9 +98,9 @@ public class BusinessSearchParameters implements Parameters {
             builder.append("&offset=").append(offset);
         }
 
-//        if (sortBy != null) {
-//            builder.append("&sort_by=").append(sortBy);
-//        }
+        if (sortBy != null) {
+            builder.append("&sort_by=").append(sortBy);
+        }
 
         if (price != null) {
             builder.append("&price=").append(getParameterValues(price));
