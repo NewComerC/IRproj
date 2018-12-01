@@ -19,6 +19,20 @@
     <script src="lib/jquery-3.2.1.js"></script>
     <script src="lib/jquery-ui-1.12.1/jquery-ui.js"></script>
     <script src="js/index.js"></script>
+    <script type="text/javascript">
+        function setFilename(){
+            var pictureFile = document.getElementById("pictureFile");
+            pictureFile.click();
+        }
+        function setSpanCon(){
+            var pictureFile = document.getElementById("pictureFile");
+            var FullFilename = pictureFile.value;
+            var aFilename = FullFilename.split('\\');
+            var filename = aFilename[aFilename.length-1];
+            var spanFilename = document.getElementById("showFilename");
+            spanFilename.innerHTML = filename;
+        }
+    </script>
 </head>
 <body>
 <header>
@@ -57,14 +71,14 @@
 <nav class="nav-bar">
     <ul class="nav-list">
         <li class="hide-imgs hide logo-sticky">
-            <a href="index.html">
+            <a href="index2.html">
                 <img src="assets/images/upmc-1.png">
             </a>
         </li>
         <li class="menu-item">
             <a href="category.html">Home</a>
             <ul class="dropdown-content">
-                <li><a href="category.html">Yelp </a></li>
+                <li><a href="index2.html">Yelp </a></li>
                 <li><a href="category.html">Google Vision</a></li>
 
             </ul>
@@ -137,11 +151,24 @@
         <div class="search-area">
             <div class="search-box">
                 <!--<img src="assets/icons/search.png"/>-->
-                <form action="/vision">
-                    <label for="search-item"></label>
-                    <input id="search-item" class="search-input" type="search" name = "imageUrl" placeholder="Search by image"/>
-                    <button class="btn btn-outline-success my-2 my-width" type="submit">Search</button>
+              <form action="/vision" method="post" enctype="multipart/form-data">
+
+                    <div class="input-group mb-3">
+                      <!--  <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                        </div> -->
+                        <div class="custom-file">
+                            <input type="file" name="file" class="custom-file-input my-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" >
+                        <!--    <label class="custom-file-label" for="inputGroupFile01">Choose file</label> -->
+                            <button class="btn btn-outline-success my-5 my-width" type="submit">Search</button>
+                        </div>
+                    </div>
+
                 </form>
+
+
+
+
 
             </div>
         </div>

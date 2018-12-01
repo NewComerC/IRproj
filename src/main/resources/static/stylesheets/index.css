@@ -334,6 +334,11 @@ input[type=search] {
     letter-spacing: 0.05263rem;
     height: 100%;
 }
+.my-input{
+  background-color:red;
+    color:darkred;
+    width:200px;
+}
 .search-box button {
     width: 18%;
     height: 40px;
