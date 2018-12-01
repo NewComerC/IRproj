@@ -339,6 +339,11 @@ input[type=search] {
     color:darkred;
     width:200px;
 }
+
+.m-stars{
+    background-color: Red;
+    color:orange;
+}
 .search-box button {
     width: 18%;
     height: 40px;

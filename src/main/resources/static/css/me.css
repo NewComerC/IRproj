@@ -35,7 +35,7 @@
 /*------text----------*/
 .m-text {
     /*就是下面三个的合集 为了方便*/
-    font-weight: 300 ! important;
+
     letter-spacing: 1px ! important;
     line-height: 1.8; /*这个属性是行间距*/
 }
@@ -76,4 +76,16 @@
     color: coral !important;
     font-weight:500 !important;
     font-size:15px !important;
+}
+
+
+
+
+
+.m-stars{
+
+    color:orange;
+}
+.m-text-color{
+   color:red;
 }
