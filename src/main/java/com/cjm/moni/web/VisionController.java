@@ -17,12 +17,12 @@
 package com.cjm.moni.web;
 
 import com.cjm.moni.entity.parameters.BusinessSearchParameters;
+import com.cjm.moni.entity.parameters.SortBy;
 import com.cjm.moni.entity.response.BusinessSearchResponse;
 import com.cjm.moni.service.YelpApi;
 import com.google.cloud.vision.v1.*;
 import com.google.common.collect.ImmutableMap;
 import com.google.protobuf.ByteString;
-import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.ui.ModelMap;
@@ -31,12 +31,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 
-import java.io.File;
 import java.io.IOException;
-import java.io.PrintStream;
-import java.text.SimpleDateFormat;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Random;
 
@@ -163,12 +159,17 @@ public class VisionController {
 
 
 
-    @PostMapping("/test")
-    public BusinessSearchResponse test(@RequestBody BusinessSearchParameters parameters) throws Exception{
-//        BusinessSearchParameters parameters=new BusinessSearchParameters();
-
-        return yelpApi.searchBusiness(parameters);
+    @GetMapping("/test")
+    public BusinessSearchResponse test() throws Exception{
+        BusinessSearchParameters para=new BusinessSearchParameters("chow mein","pittsburgh",SortBy.BEST_MATCH);
+        BusinessSearchResponse res=yelpApi.searchBusiness(para);
+        return res;
     }
+//    public BusinessSearchResponse test(@RequestBody BusinessSearchParameters parameters) throws Exception{
+////        BusinessSearchParameters parameters=new BusinessSearchParameters();
+//        BusinessSearchResponse res=yelpApi.searchBusiness(parameters);
+//        return res;
+//    }
 
     private static String getRandom() {
         String str = "";

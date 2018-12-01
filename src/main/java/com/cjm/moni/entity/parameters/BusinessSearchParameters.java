@@ -27,11 +27,12 @@ import com.cjm.moni.exception.NullParameterException;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Locale;
 
-@Data
-public class BusinessSearchParameters implements Parameters {
+//@Data
+public class BusinessSearchParameters implements Parameters,Serializable {
     private String term;
     private String location;
     private Double latitude;
@@ -101,7 +102,7 @@ public class BusinessSearchParameters implements Parameters {
         }
 
         if (sortBy != null) {
-            builder.append("&sort_by=").append(sortBy);
+            builder.append("&sort_by=").append(sortBy.getValue());
         }
 
         if (price != null) {
@@ -126,9 +127,137 @@ public class BusinessSearchParameters implements Parameters {
         return builder.toString();
     }
 
-    public BusinessSearchParameters(String term, String location, SortBy sortBy) {
+    public String getTerm() {
+        return term;
+    }
+
+    public void setTerm(String term) {
+        this.term = term;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public Integer getRadius() {
+        return radius;
+    }
+
+    public void setRadius(Integer radius) {
+        this.radius = radius;
+    }
+
+    public List<String> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<String> categories) {
+        this.categories = categories;
+    }
+
+    public Locale getLocale() {
+        return locale;
+    }
+
+    public void setLocale(Locale locale) {
+        this.locale = locale;
+    }
+
+    public Integer getLimit() {
+        return limit;
+    }
+
+    public void setLimit(Integer limit) {
+        this.limit = limit;
+    }
+
+    public Integer getOffset() {
+        return offset;
+    }
+
+    public void setOffset(Integer offset) {
+        this.offset = offset;
+    }
+
+    public SortBy getSortBy() {
+        return sortBy;
+    }
+
+    public void setSortBy(SortBy sortBy) {
+        this.sortBy = sortBy;
+    }
+
+    public List<Integer> getPrice() {
+        return price;
+    }
+
+    public void setPrice(List<Integer> price) {
+        this.price = price;
+    }
+
+    public Boolean getOpenNow() {
+        return openNow;
+    }
+
+    public void setOpenNow(Boolean openNow) {
+        this.openNow = openNow;
+    }
+
+    public Integer getOpenAt() {
+        return openAt;
+    }
+
+    public void setOpenAt(Integer openAt) {
+        this.openAt = openAt;
+    }
+
+    @Override
+    public String toString() {
+        return "BusinessSearchParameters{" +
+                "term='" + term + '\'' +
+                ", location='" + location + '\'' +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                ", radius=" + radius +
+                ", categories=" + categories +
+                ", locale=" + locale +
+                ", limit=" + limit +
+                ", offset=" + offset +
+                ", sortBy=" + sortBy +
+                ", price=" + price +
+                ", openNow=" + openNow +
+                ", openAt=" + openAt +
+                '}';
+    }
+
+
+    public BusinessSearchParameters(){
+
+    }
+
+    public BusinessSearchParameters(String term, String location,SortBy sortBy) {
         this.term = term;
         this.location = location;
-        this.sortBy = sortBy;
+        this.sortBy=sortBy;
     }
 }
