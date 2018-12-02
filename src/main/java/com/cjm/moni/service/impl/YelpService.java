@@ -42,7 +42,6 @@ public class YelpService implements YelpApi {
 //        this.token = token;
 //    }
 
-
     private final RestTemplate restTemplate = new RestTemplate();
 
     @Override

@@ -19,6 +19,7 @@ package com.cjm.moni.web;
 import com.cjm.moni.entity.parameters.BusinessSearchParameters;
 import com.cjm.moni.entity.parameters.SortBy;
 import com.cjm.moni.entity.response.BusinessSearchResponse;
+import com.cjm.moni.service.StopwordService;
 import com.cjm.moni.service.YelpApi;
 import com.google.cloud.vision.v1.*;
 import com.google.common.collect.ImmutableMap;
@@ -32,9 +33,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import java.io.IOException;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Random;
+import java.util.*;
 
 
 @RestController
@@ -49,6 +48,8 @@ public class VisionController {
     @Autowired
     private YelpApi yelpApi;
 
+    @Autowired
+    private StopwordService stopwordService;
     /**
      * This method downloads an image from a URL and sends its contents to the Vision API for label detection.
      * @return a string with the list of labels and percentage of certainty
@@ -116,7 +117,7 @@ public class VisionController {
 
     @PostMapping("/vision")
     public ModelAndView uploadImage(@RequestBody @RequestParam("file") MultipartFile uploadFile) throws Exception, IOException {
-        // Copies the content of the image to memory.
+        List<String> stopword=stopwordService.getStopWords();
 
         BatchAnnotateImagesResponse responses;
 
@@ -125,14 +126,13 @@ public class VisionController {
         ByteString imgBytes = ByteString.readFrom(uploadFile.getInputStream());
         Image image = Image.newBuilder().setContent(imgBytes).build();
 
-//        Image image = Image.newBuilder().setContent(ByteString.copyFrom(imageBytes)).build();
-
         // Sets the type of request to label detection, to detect broad sets of categories in an image.
         Feature feature = Feature.newBuilder().setType(Feature.Type.LABEL_DETECTION).build();
         AnnotateImageRequest request =
                 AnnotateImageRequest.newBuilder().setImage(image).addFeatures(feature).build();
         responses = this.imageAnnotatorClient.batchAnnotateImages(Collections.singletonList(request));
 
+        String token="food";
         // We're only expecting one response.
         if (responses.getResponsesCount() == 1) {
             AnnotateImageResponse response = responses.getResponses(0);
@@ -145,23 +145,32 @@ public class VisionController {
                 if(tags.contains(tag)) continue;
                 else tags.add(tag);
 
+                if(!stopword.contains(tag)) {
+                    token=tag;
+                    break;
+                }
+
                 annotations.put(annotation.getDescription(), annotation.getScore());
             }
             map.addAttribute("annotations", annotations.build());
         }
 
-        map.addAttribute("imageUrl", "https://cloud.google.com/vision/docs/images/demo-image.jpg");
-
-//        BusinessSearchParameters businessSearchParameters=new BusinessSearchParameters("pittsburgh","")
-
-        return new ModelAndView("result", map);
+        map.addAttribute("token",token);
+        return new ModelAndView("index2",map);
     }
 
 
 
-    @GetMapping("/test")
-    public BusinessSearchResponse test() throws Exception{
-        BusinessSearchParameters para=new BusinessSearchParameters("chow mein","pittsburgh",SortBy.BEST_MATCH);
+    @GetMapping("/test/{term}")
+    public BusinessSearchResponse test(@PathVariable("term") String term) throws Exception{
+
+        List<String> category=new ArrayList<>();
+        category.add("food");
+
+        BusinessSearchParameters para=new BusinessSearchParameters();
+        para.setLocation("pittsburgh");
+        para.setSortBy(SortBy.BEST_MATCH);
+        para.setTerm(term);
         BusinessSearchResponse res=yelpApi.searchBusiness(para);
         return res;
     }
@@ -170,13 +179,5 @@ public class VisionController {
 //        BusinessSearchResponse res=yelpApi.searchBusiness(parameters);
 //        return res;
 //    }
-
-    private static String getRandom() {
-        String str = "";
-        for (int i = 0; i < 6; i++) {
-            str = str + new Random().nextInt(10);
-        }
-        return str;
-    }
 
 }

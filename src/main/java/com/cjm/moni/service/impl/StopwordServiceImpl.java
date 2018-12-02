@@ -6,6 +6,8 @@ import com.cjm.moni.service.StopwordService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务实现类
@@ -16,5 +18,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class StopwordServiceImpl extends ServiceImpl<StopwordDao, Stopword> implements StopwordService {
-	
+
+    @Override
+    public List<String> getStopWords() {
+        return this.baseMapper.getStopWords();
+    }
 }

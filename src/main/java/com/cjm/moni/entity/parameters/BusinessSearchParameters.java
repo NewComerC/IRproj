@@ -84,6 +84,7 @@ public class BusinessSearchParameters implements Parameters,Serializable {
 
         if (categories != null) {
             builder.append("&categories=").append(getParameterValues(categories));
+            builder.deleteCharAt(builder.length()-1);
         }
 
         if (locale != null) {
@@ -255,9 +256,4 @@ public class BusinessSearchParameters implements Parameters,Serializable {
 
     }
 
-    public BusinessSearchParameters(String term, String location,SortBy sortBy) {
-        this.term = term;
-        this.location = location;
-        this.sortBy=sortBy;
-    }
 }

@@ -59,4 +59,5 @@ public class BusinessSearch extends BusinessMatches {
 
     @JsonProperty
     private List<Transactions> transactions;
+
 }

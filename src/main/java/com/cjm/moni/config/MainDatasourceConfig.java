@@ -44,7 +44,7 @@ public class MainDatasourceConfig {
         MybatisSqlSessionFactoryBean factoryBean = new MybatisSqlSessionFactoryBean();
         factoryBean.setDataSource(dataSource);
         factoryBean.setMapperLocations(
-                new PathMatchingResourcePatternResolver().getResources("classpath:/com/cjm/moni/mapper/*Mapper.xml"));
+                new PathMatchingResourcePatternResolver().getResources("classpath:/mapper/*Mapper.xml"));
 
 
         factoryBean.setTypeAliasesPackage("com.cjm.moni.entity");

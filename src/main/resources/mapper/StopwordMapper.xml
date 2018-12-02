@@ -12,4 +12,8 @@
         name
     </sql>
 
+	<select id="getStopWords" resultType="java.lang.String">
+		select name from stopword
+	</select>
+
 </mapper>
