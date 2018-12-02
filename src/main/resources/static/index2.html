@@ -67,7 +67,7 @@
                             </div>
                             <div class="right aligned column">
                                 <!--第二列 也就是右边 注意要右边对其（使其到右边）-->
-                                We find <h2 class="ui orange header m-inline-block m-text-thin">15</h2> results for you
+                                We find <h2 class="ui orange header m-inline-block m-text-thin">10</h2> results for you
                                 <!--这里要讲一个特别重要的事 就是 如果不加m-inline-block 那么因为h3 是一个block 属性-->
                                 <!--所谓的block属性 就是 他要单独占一行 但是加入那个属性之后 他就可以和别人出现在一行 注意此属性也要自己设定-->
 
@@ -469,6 +469,396 @@
                             </div>
                         </div>
 
+                        <div class="ui padded vertical segment m-padded-tb-mid">
+                            <!--卡片部分里面还要细分segment 这是一个 要点 你看原始的模板 就是分开的 这可以说是第一个卡片-->
+                            <!--为了让板式更好像模板 实际 你要这么写才不会跑版-->
+                            <!--首先 class 加 padded 使得 里面的内容离这个 segment 框 远一点-->
+                            <!--加一句vertical 使得 首先 那个 segment不在了 之后 你在 粘贴新的卡片过来，两个卡片之间还会自动帮你做出一个分割线-->
+                            <div class="ui grid">
+                                <!--为什么不写 two column grid 因为那是均分-->
+                                <div class="eleven wide column">
+                                    <h3 class="ui header">University of Pittsburgh food bar</h3>
+                                    <p class="m-text">Fuel and Fuddle is a lively little joint in the heart of Oakland
+                                        that
+                                        serves great
+                                        wild fire food and chilled beer on tap. A local food critic once described our
+                                        food
+                                        as “upscale west coast bar food.” We have no idea what that means, but we like
+                                        the
+                                        way it sounds.</p>
+
+                                    <div class="ui grid">
+                                        <div class="ten wide column">
+                                            <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d3036.541156209343!2d-79.95886068464749!3d40.441158062077356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e3!4m0!4m5!1s0x8834f229dcbd36dd%3A0x4d8b70af2248a0ef!2sFuel+and+Fuddle%2C+212+Oakland+Ave%2C+Pittsburgh%2C+PA+15213!3m2!1d40.441154!2d-79.956672!5e0!3m2!1szh-CN!2sus!4v1540509574584"
+                                                    width="100%" height="115" frameborder="0" style="border:0"
+                                                    allowfullscreen></iframe>
+                                        </div>
+                                        <div class="six wide column">
+                                            <br>
+
+                                            <img src="http://images.nymag.com/news/intelligencer/intelposts120326_starstruck_560.jpg"
+                                                 alt="" style="width:150px; height:60px">
+                                            <br>
+                                            <p>1,003 customers reviews</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="two column ui grid">
+                                        <div class="ui eleven wide column">
+                                            <div class="ui horizontal link list">
+                                                <!--link是因为这些属性是可以点击的 horizontal 是要放在一行-->
+                                                <div class="item">
+                                                    <!--因为头像和 名字根在一起 相当于一个整体 所以 用item-->
+                                                    <img src="image/user1.jpg" alt="" class="ui avatar image"
+                                                         style="width:30px; height:30px">
+                                                    <!--avatar image 放圆形小图（头像）-->
+                                                    <div class="content">
+                                                        <div class="header">Qizhou</div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="item">
+                                                    <i class="calendar icon"></i> 2018-10-25
+                                                </div>
+                                                <div class="item">
+                                                    <i class="eye icon"></i> 5044
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="right aligned five wide column">
+                                            <a href="#" , target="_blank" class="ui teal  label">Vegetarian</a>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="five wide column">
+                                    <!--用来放图 注意 图片要是可以点击的链接式的 所以要用a-->
+                                    <a href="#" target="_blank">
+                                        <img src="image/food1.jpg" alt="" class="ui rounded image" style="width:400px; height:320px">
+                                        <!--round 属性让图片以圆角的方式展开-->
+                                        <!--这里图片选用unsplash.it网站上的-->
+
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ui padded vertical segment m-padded-tb-mid">
+                            <!--卡片部分里面还要细分segment 这是一个 要点 你看原始的模板 就是分开的 这可以说是第一个卡片-->
+                            <!--为了让板式更好像模板 实际 你要这么写才不会跑版-->
+                            <!--首先 class 加 padded 使得 里面的内容离这个 segment 框 远一点-->
+                            <!--加一句vertical 使得 首先 那个 segment不在了 之后 你在 粘贴新的卡片过来，两个卡片之间还会自动帮你做出一个分割线-->
+                            <div class="ui grid">
+                                <!--为什么不写 two column grid 因为那是均分-->
+                                <div class="eleven wide column">
+                                    <h3 class="ui header">University of Pittsburgh food bar</h3>
+                                    <p class="m-text">Fuel and Fuddle is a lively little joint in the heart of Oakland
+                                        that
+                                        serves great
+                                        wild fire food and chilled beer on tap. A local food critic once described our
+                                        food
+                                        as “upscale west coast bar food.” We have no idea what that means, but we like
+                                        the
+                                        way it sounds.</p>
+
+                                    <div class="ui grid">
+                                        <div class="ten wide column">
+                                            <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d3036.541156209343!2d-79.95886068464749!3d40.441158062077356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e3!4m0!4m5!1s0x8834f229dcbd36dd%3A0x4d8b70af2248a0ef!2sFuel+and+Fuddle%2C+212+Oakland+Ave%2C+Pittsburgh%2C+PA+15213!3m2!1d40.441154!2d-79.956672!5e0!3m2!1szh-CN!2sus!4v1540509574584"
+                                                    width="100%" height="115" frameborder="0" style="border:0"
+                                                    allowfullscreen></iframe>
+                                        </div>
+                                        <div class="six wide column">
+                                            <br>
+
+                                            <img src="http://images.nymag.com/news/intelligencer/intelposts120326_starstruck_560.jpg"
+                                                 alt="" style="width:150px; height:60px">
+                                            <br>
+                                            <p>1,003 customers reviews</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="two column ui grid">
+                                        <div class="ui eleven wide column">
+                                            <div class="ui horizontal link list">
+                                                <!--link是因为这些属性是可以点击的 horizontal 是要放在一行-->
+                                                <div class="item">
+                                                    <!--因为头像和 名字根在一起 相当于一个整体 所以 用item-->
+                                                    <img src="image/user1.jpg" alt="" class="ui avatar image"
+                                                         style="width:30px; height:30px">
+                                                    <!--avatar image 放圆形小图（头像）-->
+                                                    <div class="content">
+                                                        <div class="header">Qizhou</div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="item">
+                                                    <i class="calendar icon"></i> 2018-10-25
+                                                </div>
+                                                <div class="item">
+                                                    <i class="eye icon"></i> 5044
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="right aligned five wide column">
+                                            <a href="#" , target="_blank" class="ui teal  label">Vegetarian</a>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="five wide column">
+                                    <!--用来放图 注意 图片要是可以点击的链接式的 所以要用a-->
+                                    <a href="#" target="_blank">
+                                        <img src="image/food1.jpg" alt="" class="ui rounded image" style="width:400px; height:320px">
+                                        <!--round 属性让图片以圆角的方式展开-->
+                                        <!--这里图片选用unsplash.it网站上的-->
+
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ui padded vertical segment m-padded-tb-mid">
+                            <!--卡片部分里面还要细分segment 这是一个 要点 你看原始的模板 就是分开的 这可以说是第一个卡片-->
+                            <!--为了让板式更好像模板 实际 你要这么写才不会跑版-->
+                            <!--首先 class 加 padded 使得 里面的内容离这个 segment 框 远一点-->
+                            <!--加一句vertical 使得 首先 那个 segment不在了 之后 你在 粘贴新的卡片过来，两个卡片之间还会自动帮你做出一个分割线-->
+                            <div class="ui grid">
+                                <!--为什么不写 two column grid 因为那是均分-->
+                                <div class="eleven wide column">
+                                    <h3 class="ui header">University of Pittsburgh food bar</h3>
+                                    <p class="m-text">Fuel and Fuddle is a lively little joint in the heart of Oakland
+                                        that
+                                        serves great
+                                        wild fire food and chilled beer on tap. A local food critic once described our
+                                        food
+                                        as “upscale west coast bar food.” We have no idea what that means, but we like
+                                        the
+                                        way it sounds.</p>
+
+                                    <div class="ui grid">
+                                        <div class="ten wide column">
+                                            <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d3036.541156209343!2d-79.95886068464749!3d40.441158062077356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e3!4m0!4m5!1s0x8834f229dcbd36dd%3A0x4d8b70af2248a0ef!2sFuel+and+Fuddle%2C+212+Oakland+Ave%2C+Pittsburgh%2C+PA+15213!3m2!1d40.441154!2d-79.956672!5e0!3m2!1szh-CN!2sus!4v1540509574584"
+                                                    width="100%" height="115" frameborder="0" style="border:0"
+                                                    allowfullscreen></iframe>
+                                        </div>
+                                        <div class="six wide column">
+                                            <br>
+
+                                            <img src="http://images.nymag.com/news/intelligencer/intelposts120326_starstruck_560.jpg"
+                                                 alt="" style="width:150px; height:60px">
+                                            <br>
+                                            <p>1,003 customers reviews</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="two column ui grid">
+                                        <div class="ui eleven wide column">
+                                            <div class="ui horizontal link list">
+                                                <!--link是因为这些属性是可以点击的 horizontal 是要放在一行-->
+                                                <div class="item">
+                                                    <!--因为头像和 名字根在一起 相当于一个整体 所以 用item-->
+                                                    <img src="image/user1.jpg" alt="" class="ui avatar image"
+                                                         style="width:30px; height:30px">
+                                                    <!--avatar image 放圆形小图（头像）-->
+                                                    <div class="content">
+                                                        <div class="header">Qizhou</div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="item">
+                                                    <i class="calendar icon"></i> 2018-10-25
+                                                </div>
+                                                <div class="item">
+                                                    <i class="eye icon"></i> 5044
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="right aligned five wide column">
+                                            <a href="#" , target="_blank" class="ui teal  label">Vegetarian</a>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="five wide column">
+                                    <!--用来放图 注意 图片要是可以点击的链接式的 所以要用a-->
+                                    <a href="#" target="_blank">
+                                        <img src="image/food1.jpg" alt="" class="ui rounded image" style="width:400px; height:320px">
+                                        <!--round 属性让图片以圆角的方式展开-->
+                                        <!--这里图片选用unsplash.it网站上的-->
+
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ui padded vertical segment m-padded-tb-mid">
+                            <!--卡片部分里面还要细分segment 这是一个 要点 你看原始的模板 就是分开的 这可以说是第一个卡片-->
+                            <!--为了让板式更好像模板 实际 你要这么写才不会跑版-->
+                            <!--首先 class 加 padded 使得 里面的内容离这个 segment 框 远一点-->
+                            <!--加一句vertical 使得 首先 那个 segment不在了 之后 你在 粘贴新的卡片过来，两个卡片之间还会自动帮你做出一个分割线-->
+                            <div class="ui grid">
+                                <!--为什么不写 two column grid 因为那是均分-->
+                                <div class="eleven wide column">
+                                    <h3 class="ui header">University of Pittsburgh food bar</h3>
+                                    <p class="m-text">Fuel and Fuddle is a lively little joint in the heart of Oakland
+                                        that
+                                        serves great
+                                        wild fire food and chilled beer on tap. A local food critic once described our
+                                        food
+                                        as “upscale west coast bar food.” We have no idea what that means, but we like
+                                        the
+                                        way it sounds.</p>
+
+                                    <div class="ui grid">
+                                        <div class="ten wide column">
+                                            <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d3036.541156209343!2d-79.95886068464749!3d40.441158062077356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e3!4m0!4m5!1s0x8834f229dcbd36dd%3A0x4d8b70af2248a0ef!2sFuel+and+Fuddle%2C+212+Oakland+Ave%2C+Pittsburgh%2C+PA+15213!3m2!1d40.441154!2d-79.956672!5e0!3m2!1szh-CN!2sus!4v1540509574584"
+                                                    width="100%" height="115" frameborder="0" style="border:0"
+                                                    allowfullscreen></iframe>
+                                        </div>
+                                        <div class="six wide column">
+                                            <br>
+
+                                            <img src="http://images.nymag.com/news/intelligencer/intelposts120326_starstruck_560.jpg"
+                                                 alt="" style="width:150px; height:60px">
+                                            <br>
+                                            <p>1,003 customers reviews</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="two column ui grid">
+                                        <div class="ui eleven wide column">
+                                            <div class="ui horizontal link list">
+                                                <!--link是因为这些属性是可以点击的 horizontal 是要放在一行-->
+                                                <div class="item">
+                                                    <!--因为头像和 名字根在一起 相当于一个整体 所以 用item-->
+                                                    <img src="image/user1.jpg" alt="" class="ui avatar image"
+                                                         style="width:30px; height:30px">
+                                                    <!--avatar image 放圆形小图（头像）-->
+                                                    <div class="content">
+                                                        <div class="header">Qizhou</div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="item">
+                                                    <i class="calendar icon"></i> 2018-10-25
+                                                </div>
+                                                <div class="item">
+                                                    <i class="eye icon"></i> 5044
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="right aligned five wide column">
+                                            <a href="#" , target="_blank" class="ui teal  label">Vegetarian</a>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="five wide column">
+                                    <!--用来放图 注意 图片要是可以点击的链接式的 所以要用a-->
+                                    <a href="#" target="_blank">
+                                        <img src="image/food1.jpg" alt="" class="ui rounded image" style="width:400px; height:320px">
+                                        <!--round 属性让图片以圆角的方式展开-->
+                                        <!--这里图片选用unsplash.it网站上的-->
+
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ui padded vertical segment m-padded-tb-mid">
+                            <!--卡片部分里面还要细分segment 这是一个 要点 你看原始的模板 就是分开的 这可以说是第一个卡片-->
+                            <!--为了让板式更好像模板 实际 你要这么写才不会跑版-->
+                            <!--首先 class 加 padded 使得 里面的内容离这个 segment 框 远一点-->
+                            <!--加一句vertical 使得 首先 那个 segment不在了 之后 你在 粘贴新的卡片过来，两个卡片之间还会自动帮你做出一个分割线-->
+                            <div class="ui grid">
+                                <!--为什么不写 two column grid 因为那是均分-->
+                                <div class="eleven wide column">
+                                    <h3 class="ui header">University of Pittsburgh food bar</h3>
+                                    <p class="m-text">Fuel and Fuddle is a lively little joint in the heart of Oakland
+                                        that
+                                        serves great
+                                        wild fire food and chilled beer on tap. A local food critic once described our
+                                        food
+                                        as “upscale west coast bar food.” We have no idea what that means, but we like
+                                        the
+                                        way it sounds.</p>
+
+                                    <div class="ui grid">
+                                        <div class="ten wide column">
+                                            <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d3036.541156209343!2d-79.95886068464749!3d40.441158062077356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e3!4m0!4m5!1s0x8834f229dcbd36dd%3A0x4d8b70af2248a0ef!2sFuel+and+Fuddle%2C+212+Oakland+Ave%2C+Pittsburgh%2C+PA+15213!3m2!1d40.441154!2d-79.956672!5e0!3m2!1szh-CN!2sus!4v1540509574584"
+                                                    width="100%" height="115" frameborder="0" style="border:0"
+                                                    allowfullscreen></iframe>
+                                        </div>
+                                        <div class="six wide column">
+                                            <br>
+
+                                            <img src="http://images.nymag.com/news/intelligencer/intelposts120326_starstruck_560.jpg"
+                                                 alt="" style="width:150px; height:60px">
+                                            <br>
+                                            <p>1,003 customers reviews</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="two column ui grid">
+                                        <div class="ui eleven wide column">
+                                            <div class="ui horizontal link list">
+                                                <!--link是因为这些属性是可以点击的 horizontal 是要放在一行-->
+                                                <div class="item">
+                                                    <!--因为头像和 名字根在一起 相当于一个整体 所以 用item-->
+                                                    <img src="image/user1.jpg" alt="" class="ui avatar image"
+                                                         style="width:30px; height:30px">
+                                                    <!--avatar image 放圆形小图（头像）-->
+                                                    <div class="content">
+                                                        <div class="header">Qizhou</div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="item">
+                                                    <i class="calendar icon"></i> 2018-10-25
+                                                </div>
+                                                <div class="item">
+                                                    <i class="eye icon"></i> 5044
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="right aligned five wide column">
+                                            <a href="#" , target="_blank" class="ui teal  label">Vegetarian</a>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="five wide column">
+                                    <!--用来放图 注意 图片要是可以点击的链接式的 所以要用a-->
+                                    <a href="#" target="_blank">
+                                        <img src="image/food1.jpg" alt="" class="ui rounded image" style="width:400px; height:320px">
+                                        <!--round 属性让图片以圆角的方式展开-->
+                                        <!--这里图片选用unsplash.it网站上的-->
+
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
 
 
 
@@ -664,6 +1054,24 @@
                         <!--这里 要说一下 图片大小调整 和 居中 都要放在卡片的属性， 否则你会看到 图片不能占满整个卡片-->
                         <!--外层会有一个框（卡片），图片占一部分，剩下大半空白的部分-->
                     </div>
+                    <div class="ui centered card m-margin-tb-large">
+                        <!--图片以卡片的形式排列-->
+                        <img src="image/food1.jpg" alt="" class="ui rounded image" style="width:300px; height:350px">
+                        <!--这里 要说一下 图片大小调整 和 居中 都要放在卡片的属性， 否则你会看到 图片不能占满整个卡片-->
+                        <!--外层会有一个框（卡片），图片占一部分，剩下大半空白的部分-->
+                    </div>
+                    <div class="ui centered card m-margin-tb-large">
+                        <!--图片以卡片的形式排列-->
+                        <img src="image/food5.jpg" alt="" class="ui rounded image" style="width:300px; height:350px">
+                        <!--这里 要说一下 图片大小调整 和 居中 都要放在卡片的属性， 否则你会看到 图片不能占满整个卡片-->
+                        <!--外层会有一个框（卡片），图片占一部分，剩下大半空白的部分-->
+                    </div>
+                    <div class="ui centered card m-margin-tb-large">
+                        <!--图片以卡片的形式排列-->
+                        <img src="image/food2.jpg" alt="" class="ui rounded image" style="width:300px; height:350px">
+                        <!--这里 要说一下 图片大小调整 和 居中 都要放在卡片的属性， 否则你会看到 图片不能占满整个卡片-->
+                        <!--外层会有一个框（卡片），图片占一部分，剩下大半空白的部分-->
+                    </div>
                 </div>
             </div>
         </div>
@@ -756,25 +1164,28 @@
                     dataType: "json",
                     success: function (res) {                        
                         $("#segment32").html("");
-                        $("#segment32").append('<div class="ui padded vertical segment m-padded-tb-mid"><div class="ui grid"><div class="eleven wide column"><h3 class="ui header">' + res['businesses'][0]["name"] + '</h3>' +
-                            ' <p>'+ '<b>Country: </b>' + res['businesses'][0]["location"]["country"] + '<br />' + '<b>City: </b>' + res['businesses'][0]["location"]["city"] +  '<br />' +  '<b>State: </b>' + res['businesses'][0]["location"]["state"] + '<br />' +  '<b>Zip code: </b>' + res['businesses'][0]["location"]["zip_code"]+ '<br />' +  '<b>Address: </b>' + res['businesses'][0]["location"]["address1"] + '<br />' +  '<b>Phone Number: </b>' + res['businesses'][0]["phone"]+ '</p> <div class="ui grid"><div class="ten wide column">' +
-                            '<iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d3036.541156209343!2d-79.95886068464749!3d40.441158062077356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e3!4m0!4m5!1s0x8834f229dcbd36dd%3A0x4d8b70af2248a0ef!2sFuel+and+Fuddle%2C+212+Oakland+Ave%2C+Pittsburgh%2C+PA+15213!3m2!1d40.441154!2d-79.956672!5e0!3m2!1szh-CN!2sus!4v1540509574584"width="100%" height="115" frameborder="0" style="border:0" allowfullscreen></iframe>' +
-                            ' </div><div class="six wide column"><br>' +
+                        for(var i = 0; i<10;i++){
+                            $("#segment32").append('<div class="ui padded vertical segment m-padded-tb-mid"><div class="ui grid"><div class="ten wide column"><h3 class="ui header">' + res['businesses'][i]["name"] + '</h3>' +
+                                ' <p>'+ '<b>Country: </b>' + res['businesses'][i]["location"]["country"] + '<br />' + '<b>City: </b>' + res['businesses'][i]["location"]["city"] +  '<br />' +  '<b>State: </b>' + res['businesses'][i]["location"]["state"] + '<br />' +  '<b>Zip code: </b>' + res['businesses'][i]["location"]["zip_code"]+ '<br />' +  '<b>Address: </b>' + res['businesses'][i]["location"]["address1"] + '<br />' +  '<b>Phone Number: </b>' + res['businesses'][i]["phone"]+ '</p> <div class="ui grid"><div class="ten wide column">' +
+                                '<iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d3036.541156209343!2d-79.95886068464749!3d40.441158062077356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e3!4m0!4m5!1s0x8834f229dcbd36dd%3A0x4d8b70af2248a0ef!2sFuel+and+Fuddle%2C+212+Oakland+Ave%2C+Pittsburgh%2C+PA+15213!3m2!1d40.441154!2d-79.956672!5e0!3m2!1szh-CN!2sus!4v1540509574584"width="100%" height="115" frameborder="0" style="border:0" allowfullscreen></iframe>' +
+                                ' </div><div class="six wide column"><br>' +
 
-                            ' <h4 class = "m-inline-block">User rating :</h4>' + ' ' + '<p class = "m-text-color m-inline-block">' + res['businesses'][0]["rating"] + '</p>' + ' '+ '<i class="fas fa-star m-stars"></i>' + '<br><p>' + res['businesses'][0]["review_count"] + '  '+ '<b>Customer reviews</b>'+ '</p></div></div>' +
+                                ' <h4 class = "m-inline-block">User rating :</h4>' + ' ' + '<p class = "m-text-color m-inline-block">' + res['businesses'][i]["rating"] + '</p>' + ' '+ '<i class="fas fa-star m-stars"></i>' + '<br><p>' + res['businesses'][i]["review_count"] + '  '+ '<b>Customer reviews</b>'+ '</p></div></div>' +
 
-                            '<div class="two column ui grid"><div class="ui eleven wide column"><div class="ui mini horizontal link list"><div class="item">' +
-                            '<img src="image/user1.jpg" alt="" class="ui avatar image" style="width:30px; height:30px">' +
-                            '<div class="content"><div class="header">Qizhou</div></div></div>' +
+                                '<div class="two column ui grid"><div class="ui eleven wide column"><div class="ui mini horizontal link list"><div class="item">' +
+                                '<img src="image/user1.jpg" alt="" class="ui avatar image" style="width:30px; height:30px">' +
+                                '<div class="content"><div class="header">Qizhou</div></div></div>' +
 
-                            '<div class="item"><i class="calendar icon"></i> 2018-10-25 </div><div class="item"> <i class="eye icon"></i> 5044</div></div></div>' +
+                                '<div class="item"><i class="calendar icon"></i> 2018-10-25 </div><div class="item"> <i class="eye icon"></i> 5044</div></div></div>' +
 
 
-                            '<div class="right aligned five wide column"><a href="#" , target="_blank" class="ui teal  label">' + res['businesses'][0]["categories"][0]["title"] + '</a></div></div></div>' +
+                                '<div class="right aligned five wide column"><a href="#" , target="_blank" class="ui teal  label">' + res['businesses'][i]["categories"][0]["title"] + '</a></div></div></div>' +
 
-                            '<div class="five wide column"><a href="#" target="_blank">' +
-                            '<img src="'+ res['businesses'][0]["image_url"] + '" alt="" class="ui rounded image" style="width:500px; height:320px">' +
-                            '</a></div></div></div>');
+                                '<div class="six wide column"><a href="#" target="_blank">' +
+                                '<img src="'+ res['businesses'][i]["image_url"] + '" alt="" class="ui rounded image" style="width:650px; height:320px">' +
+                                '</a></div></div></div>');
+                        }
+
 
 
                     },
