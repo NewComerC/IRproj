@@ -335,11 +335,14 @@ input[type=search] {
     height: 100%;
 }
 .my-input{
-  background-color:red;
-    color:darkred;
-    width:200px;
+  background-color:lightgrey;
+    color:black;
+    width:500px;
 }
 
+.my-margin{
+   margin-top:-10px;
+}
 .m-stars{
     background-color: Red;
     color:orange;

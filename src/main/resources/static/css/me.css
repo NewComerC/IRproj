@@ -89,3 +89,10 @@
 .m-text-color{
    color:red;
 }
+
+.my-width{
+  height:38px;
+    width:70px;
+  margin-left:10px;
+    margin-top:3px;
+}
