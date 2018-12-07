@@ -156,6 +156,16 @@ public class VisionController {
         BusinessSearchResponse res=yelpApi.searchBusiness(para);
         return res;
     }
+
+    @PostMapping("/newView")
+    public ModelAndView test1(String term) throws Exception{
+
+        ModelMap map=new ModelMap();
+
+        map.addAttribute("token",term);
+        return new ModelAndView("index2",map);
+
+    }
 //    public BusinessSearchResponse test(@RequestBody BusinessSearchParameters parameters) throws Exception{
 ////        BusinessSearchParameters parameters=new BusinessSearchParameters();
 //        BusinessSearchResponse res=yelpApi.searchBusiness(parameters);
