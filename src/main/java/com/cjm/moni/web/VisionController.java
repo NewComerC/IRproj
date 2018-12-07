@@ -146,7 +146,9 @@ public class VisionController {
                 else tags.add(tag);
 
                 if(!stopword.contains(tag)) {
+
                     token=tag;
+                    System.out.println(token);
                     break;
                 }
 

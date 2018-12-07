@@ -44,6 +44,9 @@ public class Location {
     private String city;
 
     @JsonProperty
+    private String state;
+
+    @JsonProperty
     private String country;
 
     @JsonProperty("zip_code")
