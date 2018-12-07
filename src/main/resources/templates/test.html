@@ -6,7 +6,7 @@
     <script th:src="@{/js/jquery-2.1.4.min.js}"></script>
 </head>
 <body>
-<form id="upload" enctype="multipart/form-data" method="post" action="/vision">
+<form id="upload" enctype="multipart/form-data" method="post" action="/getResult">
     <input type="file" name="uploadFile"/>
     <input type="hidden" name="id" value="12"/>
     <input type="submit" value="文件上传" onclick="doUpload()"/>

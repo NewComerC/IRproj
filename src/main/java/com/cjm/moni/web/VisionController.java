@@ -55,65 +55,45 @@ public class VisionController {
      * @return a string with the list of labels and percentage of certainty
      * @throws Exception if the Vision API call produces an error
      */
-//    @PostMapping("/vision")
-//    public ModelAndView uploadImage(@RequestParam("file")MultipartFile file,HttpServletRequest httpServletRequest,String imageUrl, ModelMap map) throws Exception, IOException {
-//        // Copies the content of the image to memory.
-//        if (!file.isEmpty()) {
-//            Date date = new Date();
-//            String realPath = httpServletRequest.getSession().getServletContext().getRealPath("");
-//            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
-//            String suffix  = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
-//            String fileName = dateFormat.format(date) + getRandom() + suffix;
-//            String path = realPath + "upload_img\\" + fileName;
-//            try {
-//                File dir = new File(realPath + "upload_img");
-//                if (dir.exists()) {
-//                    file.transferTo(new File(path));
-//                } else {
-//                    dir.mkdirs();
-//                    file.transferTo(new File(path));
-//                }
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            imageUrl = path;
-//        }
-////        byte[] imageBytes = StreamUtils.copyToByteArray(this.resourceLoader.getResource(imageUrl).getInputStream());
-//
-//        BatchAnnotateImagesResponse responses;
-//
-//        ByteString imgBytes = ByteString.readFrom(resourceLoader.getResource("file:"+imageUrl).getInputStream());
-//        Image image = Image.newBuilder().setContent(imgBytes).build();
-//
-////        Image image = Image.newBuilder().setContent(ByteString.copyFrom(imageBytes)).build();
-//
-//        // Sets the type of request to label detection, to detect broad sets of categories in an image.
-//        Feature feature = Feature.newBuilder().setType(Feature.Type.LABEL_DETECTION).build();
-//        AnnotateImageRequest request =
-//                AnnotateImageRequest.newBuilder().setImage(image).addFeatures(feature).build();
-//        responses = this.imageAnnotatorClient.batchAnnotateImages(Collections.singletonList(request));
-//
-//        // We're only expecting one response.
-//        if (responses.getResponsesCount() == 1) {
-//            AnnotateImageResponse response = responses.getResponses(0);
-//
-//            ImmutableMap.Builder<String, Float> annotations = ImmutableMap.builder();
-//
-//            HashSet<String> tags=new HashSet<>();
-//            for (EntityAnnotation annotation : response.getLabelAnnotationsList()) {
-//                String tag=annotation.getDescription();
-//                if(tags.contains(tag)) continue;
-//                else tags.add(tag);
-//
-//                annotations.put(annotation.getDescription(), annotation.getScore());
-//            }
-//            map.addAttribute("annotations", annotations.build());
-//        }
-//
-//        map.addAttribute("imageUrl", imageUrl);
-//
-//        return new ModelAndView("result", map);
-//    }
+    @PostMapping("/getResult")
+    public ModelAndView uploadImage1(@RequestParam("uploadFile")MultipartFile file) throws Exception, IOException {
+        // Copies the content of the image to memory.
+
+        ModelMap map=new ModelMap();
+
+        BatchAnnotateImagesResponse responses;
+
+        ByteString imgBytes = ByteString.readFrom(file.getInputStream());
+        Image image = Image.newBuilder().setContent(imgBytes).build();
+
+//        Image image = Image.newBuilder().setContent(ByteString.copyFrom(imageBytes)).build();
+
+        // Sets the type of request to label detection, to detect broad sets of categories in an image.
+        Feature feature = Feature.newBuilder().setType(Feature.Type.LABEL_DETECTION).build();
+        AnnotateImageRequest request =
+                AnnotateImageRequest.newBuilder().setImage(image).addFeatures(feature).build();
+        responses = this.imageAnnotatorClient.batchAnnotateImages(Collections.singletonList(request));
+
+        // We're only expecting one response.
+        if (responses.getResponsesCount() == 1) {
+            AnnotateImageResponse response = responses.getResponses(0);
+
+            ImmutableMap.Builder<String, Float> annotations = ImmutableMap.builder();
+
+            HashSet<String> tags=new HashSet<>();
+            for (EntityAnnotation annotation : response.getLabelAnnotationsList()) {
+                String tag=annotation.getDescription();
+                if(tags.contains(tag)) continue;
+                else tags.add(tag);
+
+                annotations.put(annotation.getDescription(), annotation.getScore());
+            }
+            map.addAttribute("annotations", annotations.build());
+        }
+
+
+        return new ModelAndView("result", map);
+    }
 
     @PostMapping("/vision")
     public ModelAndView uploadImage(@RequestBody @RequestParam("file") MultipartFile uploadFile) throws Exception, IOException {
